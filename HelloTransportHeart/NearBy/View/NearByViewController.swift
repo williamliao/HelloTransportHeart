@@ -8,22 +8,37 @@
 import UIKit
 
 class NearByViewController: UIViewController {
+    
+    var viewModel: NearByViewModel!
+    var nearByView: NearByView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        renderView()
     }
-    
 
-    /*
-    // MARK: - Navigation
+    func renderView() {
+        
+        let locationUpdater = LocationUpdater()
+        Task {
+            await locationUpdater.beginTracking()
+            
+        }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        viewModel = NearByViewModel(networkManager: NetworkManager(), locationClient: LocalLocationClient())
+        
+        self.title = "BusStop"
+        nearByView = NearByView(viewModel: viewModel)
+        nearByView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(nearByView)
+        
+        NSLayoutConstraint.activate([
+            nearByView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            nearByView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            nearByView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            nearByView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+        ])
     }
-    */
 
 }

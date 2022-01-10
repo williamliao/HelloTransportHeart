@@ -23,6 +23,7 @@
 		C81EB51A278BCEF400A053E4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB519278BCEF400A053E4 /* NetworkManager.swift */; };
 		C81EB51C278BCF7800A053E4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB51B278BCF7800A053E4 /* NetworkError.swift */; };
 		C81EB51E278BD33B00A053E4 /* NearByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB51D278BD33B00A053E4 /* NearByView.swift */; };
+		C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553C278BE97A00AFDE1C /* LocationClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		C81EB519278BCEF400A053E4 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C81EB51B278BCF7800A053E4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		C81EB51D278BD33B00A053E4 /* NearByView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByView.swift; sourceTree = "<group>"; };
+		C875553C278BE97A00AFDE1C /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				C81EB50B278BCAC800A053E4 /* LocationUpdater.swift */,
+				C875553C278BE97A00AFDE1C /* LocationClient.swift */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				C81EB51E278BD33B00A053E4 /* NearByView.swift in Sources */,
 				C81EB50C278BCAC800A053E4 /* LocationUpdater.swift in Sources */,
 				C81EB51A278BCEF400A053E4 /* NetworkManager.swift in Sources */,
+				C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */,
 				C81EB514278BCC8400A053E4 /* NearByViewModel.swift in Sources */,
 				C81EB51C278BCF7800A053E4 /* NetworkError.swift in Sources */,
 				C81EB4D8278BC7CE00A053E4 /* SceneDelegate.swift in Sources */,
@@ -518,11 +522,16 @@
 				DEVELOPMENT_TEAM = 6AH3KD253Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloTransportHeart/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HelloTransportHeart;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Demo;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Demo;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -546,11 +555,16 @@
 				DEVELOPMENT_TEAM = 6AH3KD253Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloTransportHeart/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HelloTransportHeart;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Demo;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Demo;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

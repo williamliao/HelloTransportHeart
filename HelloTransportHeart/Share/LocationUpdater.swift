@@ -18,6 +18,7 @@ class LocationUpdater: NSObject, CLLocationManagerDelegate {
     private var permissionContinuation: CheckedContinuation<CLAuthorizationStatus, Never>?
     
     var locationHandler: ([CLLocation]) -> Void = { _ in }
+    var userLocation: CLLocationCoordinate2D?
     
     override init() {
         locationManager = CLLocationManager()
@@ -41,6 +42,32 @@ class LocationUpdater: NSObject, CLLocationManagerDelegate {
         return await withCheckedContinuation { continuation in
             permissionContinuation = continuation
         }
+    }
+    
+    func beginTracking() async {
+        let status = await requestPermission()
+        if status == .authorizedWhenInUse {
+            for await location in locationEvents() {
+                print(location.coordinate)
+                userLocation = location.coordinate
+            }
+        }
+    }
+    
+    func getUserLocation() async -> CLLocationCoordinate2D? {
+        return userLocation
+    }
+    
+    func locationEvents() -> AsyncStream<CLLocation> {
+        let locations = AsyncStream(CLLocation.self) { continuation in
+            locationHandler = { locations in
+                locations.forEach {
+                    continuation.yield($0)
+                }
+            }
+            start()
+        }
+        return locations
     }
     
     // MARK: - Location Delegate
