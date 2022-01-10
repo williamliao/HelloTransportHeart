@@ -14,7 +14,7 @@ class StatusViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        renderView()
     }
     
     func renderView() {

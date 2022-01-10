@@ -9,7 +9,7 @@ import Foundation
 
 class StatusViewModel {
     var showError: ((_ error:NetworkError) -> Void)?
-    var reloadMapView: (() -> Void)?
+    var reloadCollectionView: (() -> Void)?
     private let networkManager: NetworkManager
     var respone: StatusResponse!
     
@@ -29,7 +29,7 @@ class StatusViewModel {
                 case .success(let res):
                     print("fetchStatusData \(res)")
                     respone = res
-                    reloadMapView?()
+                    reloadCollectionView?()
                 case .failure(let error):
                     print("fetchStatusData error \(error)")
                     showError?(error)

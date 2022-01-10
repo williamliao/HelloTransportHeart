@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="124.55357142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Status View Controller-->
         <scene sceneID="Sk9-yj-BKg">
             <objects>
-                <viewController id="hUP-OP-WRE" sceneMemberID="viewController">
+                <viewController id="hUP-OP-WRE" customClass="StatusViewController" customModule="HelloTransportHeart" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fs3-FB-eat">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNj-Fk-alR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1970" y="785"/>
+            <point key="canvasLocation" x="1975" y="830"/>
         </scene>
         <!--NearBy-->
         <scene sceneID="Qwa-Uw-hJV">
@@ -89,10 +89,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hUP-OP-WRE" kind="relationship" relationship="rootViewController" id="v9p-ul-VQs"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pls-w3-fOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="785"/>
+            <point key="canvasLocation" x="1048" y="831"/>
         </scene>
     </scenes>
     <resources>
