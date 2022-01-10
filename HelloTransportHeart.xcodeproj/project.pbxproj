@@ -48,6 +48,9 @@
 		C8755573278C203D00AFDE1C /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755572278C203D00AFDE1C /* TimeTableViewModel.swift */; };
 		C875557B278C327300AFDE1C /* TimeTableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875557A278C327300AFDE1C /* TimeTableCollectionViewCell.swift */; };
 		C875557F278C3D7100AFDE1C /* BusServiceRespone.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875557E278C3D7100AFDE1C /* BusServiceRespone.swift */; };
+		C8755582278C3F5000AFDE1C /* BusServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755581278C3F5000AFDE1C /* BusServiceViewModel.swift */; };
+		C8755585278C3F7700AFDE1C /* BusServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755584278C3F7700AFDE1C /* BusServiceView.swift */; };
+		C8755587278C3F8100AFDE1C /* BusServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755586278C3F8100AFDE1C /* BusServiceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,9 @@
 		C8755572278C203D00AFDE1C /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
 		C875557A278C327300AFDE1C /* TimeTableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableCollectionViewCell.swift; sourceTree = "<group>"; };
 		C875557E278C3D7100AFDE1C /* BusServiceRespone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusServiceRespone.swift; sourceTree = "<group>"; };
+		C8755581278C3F5000AFDE1C /* BusServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusServiceViewModel.swift; sourceTree = "<group>"; };
+		C8755584278C3F7700AFDE1C /* BusServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusServiceView.swift; sourceTree = "<group>"; };
+		C8755586278C3F8100AFDE1C /* BusServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusServiceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +344,8 @@
 		C875557C278C3CA800AFDE1C /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				C8755583278C3F5E00AFDE1C /* View */,
+				C8755580278C3F3D00AFDE1C /* ViewModel */,
 				C875557D278C3D6200AFDE1C /* Model */,
 			);
 			path = Search;
@@ -349,6 +357,23 @@
 				C875557E278C3D7100AFDE1C /* BusServiceRespone.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C8755580278C3F3D00AFDE1C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C8755581278C3F5000AFDE1C /* BusServiceViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C8755583278C3F5E00AFDE1C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C8755584278C3F7700AFDE1C /* BusServiceView.swift */,
+				C8755586278C3F8100AFDE1C /* BusServiceViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -483,8 +508,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8755547278BFA4B00AFDE1C /* StatusViewController.swift in Sources */,
+				C8755585278C3F7700AFDE1C /* BusServiceView.swift in Sources */,
 				C8755567278C163F00AFDE1C /* TimeTable.swift in Sources */,
 				C875555F278BFBA200AFDE1C /* Northern.swift in Sources */,
+				C8755582278C3F5000AFDE1C /* BusServiceViewModel.swift in Sources */,
 				C8755559278BFB5500AFDE1C /* Hammersmith.swift in Sources */,
 				C8755545278BFA3100AFDE1C /* StatusViewModel.swift in Sources */,
 				C875554D278BFAC800AFDE1C /* Line.swift in Sources */,
@@ -509,6 +536,7 @@
 				C8755561278BFBBC00AFDE1C /* Piccadilly.swift in Sources */,
 				C8755551278BFAEF00AFDE1C /* central.swift in Sources */,
 				C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */,
+				C8755587278C3F8100AFDE1C /* BusServiceViewController.swift in Sources */,
 				C81EB514278BCC8400A053E4 /* NearByViewModel.swift in Sources */,
 				C875555D278BFB7B00AFDE1C /* Metropolitan.swift in Sources */,
 				C8755563278BFBD500AFDE1C /* Victoria.swift in Sources */,
