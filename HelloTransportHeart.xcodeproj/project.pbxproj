@@ -25,6 +25,23 @@
 		C81EB51E278BD33B00A053E4 /* NearByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB51D278BD33B00A053E4 /* NearByView.swift */; };
 		C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553C278BE97A00AFDE1C /* LocationClient.swift */; };
 		C875553F278BF23800AFDE1C /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553E278BF23800AFDE1C /* BusStop.swift */; };
+		C8755545278BFA3100AFDE1C /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755544278BFA3100AFDE1C /* StatusViewModel.swift */; };
+		C8755547278BFA4B00AFDE1C /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755546278BFA4B00AFDE1C /* StatusViewController.swift */; };
+		C8755549278BFA5F00AFDE1C /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755548278BFA5F00AFDE1C /* StatusView.swift */; };
+		C875554B278BFAA800AFDE1C /* StatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875554A278BFAA800AFDE1C /* StatusResponse.swift */; };
+		C875554D278BFAC800AFDE1C /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875554C278BFAC800AFDE1C /* Line.swift */; };
+		C875554F278BFADA00AFDE1C /* bakerloo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875554E278BFADA00AFDE1C /* bakerloo.swift */; };
+		C8755551278BFAEF00AFDE1C /* central.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755550278BFAEF00AFDE1C /* central.swift */; };
+		C8755553278BFB1900AFDE1C /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755552278BFB1900AFDE1C /* Circle.swift */; };
+		C8755555278BFB3000AFDE1C /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755554278BFB3000AFDE1C /* District.swift */; };
+		C8755557278BFB4400AFDE1C /* Dlr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755556278BFB4400AFDE1C /* Dlr.swift */; };
+		C8755559278BFB5500AFDE1C /* Hammersmith.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755558278BFB5500AFDE1C /* Hammersmith.swift */; };
+		C875555B278BFB6800AFDE1C /* Jubilee.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875555A278BFB6800AFDE1C /* Jubilee.swift */; };
+		C875555D278BFB7B00AFDE1C /* Metropolitan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875555C278BFB7B00AFDE1C /* Metropolitan.swift */; };
+		C875555F278BFBA200AFDE1C /* Northern.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875555E278BFBA200AFDE1C /* Northern.swift */; };
+		C8755561278BFBBC00AFDE1C /* Piccadilly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755560278BFBBC00AFDE1C /* Piccadilly.swift */; };
+		C8755563278BFBD500AFDE1C /* Victoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755562278BFBD500AFDE1C /* Victoria.swift */; };
+		C8755565278BFBE800AFDE1C /* Waterlooandcity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755564278BFBE800AFDE1C /* Waterlooandcity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +84,23 @@
 		C81EB51D278BD33B00A053E4 /* NearByView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByView.swift; sourceTree = "<group>"; };
 		C875553C278BE97A00AFDE1C /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 		C875553E278BF23800AFDE1C /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
+		C8755544278BFA3100AFDE1C /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
+		C8755546278BFA4B00AFDE1C /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		C8755548278BFA5F00AFDE1C /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		C875554A278BFAA800AFDE1C /* StatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusResponse.swift; sourceTree = "<group>"; };
+		C875554C278BFAC800AFDE1C /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		C875554E278BFADA00AFDE1C /* bakerloo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bakerloo.swift; sourceTree = "<group>"; };
+		C8755550278BFAEF00AFDE1C /* central.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = central.swift; sourceTree = "<group>"; };
+		C8755552278BFB1900AFDE1C /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		C8755554278BFB3000AFDE1C /* District.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
+		C8755556278BFB4400AFDE1C /* Dlr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dlr.swift; sourceTree = "<group>"; };
+		C8755558278BFB5500AFDE1C /* Hammersmith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hammersmith.swift; sourceTree = "<group>"; };
+		C875555A278BFB6800AFDE1C /* Jubilee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jubilee.swift; sourceTree = "<group>"; };
+		C875555C278BFB7B00AFDE1C /* Metropolitan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metropolitan.swift; sourceTree = "<group>"; };
+		C875555E278BFBA200AFDE1C /* Northern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Northern.swift; sourceTree = "<group>"; };
+		C8755560278BFBBC00AFDE1C /* Piccadilly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piccadilly.swift; sourceTree = "<group>"; };
+		C8755562278BFBD500AFDE1C /* Victoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Victoria.swift; sourceTree = "<group>"; };
+		C8755564278BFBE800AFDE1C /* Waterlooandcity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waterlooandcity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +151,7 @@
 		C81EB4D4278BC7CE00A053E4 /* HelloTransportHeart */ = {
 			isa = PBXGroup;
 			children = (
+				C8755540278BF9FD00AFDE1C /* Status */,
 				C81EB50D278BCC2800A053E4 /* NearBy */,
 				C81EB50A278BCAB500A053E4 /* Share */,
 				C81EB505278BCA1500A053E4 /* Network */,
@@ -198,6 +233,54 @@
 			children = (
 				C81EB511278BCC7500A053E4 /* NearByViewController.swift */,
 				C81EB51D278BD33B00A053E4 /* NearByView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C8755540278BF9FD00AFDE1C /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				C8755543278BFA1600AFDE1C /* View */,
+				C8755542278BFA0C00AFDE1C /* ViewModel */,
+				C8755541278BFA0400AFDE1C /* Model */,
+			);
+			path = Status;
+			sourceTree = "<group>";
+		};
+		C8755541278BFA0400AFDE1C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C875554A278BFAA800AFDE1C /* StatusResponse.swift */,
+				C875554C278BFAC800AFDE1C /* Line.swift */,
+				C875554E278BFADA00AFDE1C /* bakerloo.swift */,
+				C8755550278BFAEF00AFDE1C /* central.swift */,
+				C8755552278BFB1900AFDE1C /* Circle.swift */,
+				C8755554278BFB3000AFDE1C /* District.swift */,
+				C8755556278BFB4400AFDE1C /* Dlr.swift */,
+				C8755558278BFB5500AFDE1C /* Hammersmith.swift */,
+				C875555A278BFB6800AFDE1C /* Jubilee.swift */,
+				C875555C278BFB7B00AFDE1C /* Metropolitan.swift */,
+				C875555E278BFBA200AFDE1C /* Northern.swift */,
+				C8755560278BFBBC00AFDE1C /* Piccadilly.swift */,
+				C8755562278BFBD500AFDE1C /* Victoria.swift */,
+				C8755564278BFBE800AFDE1C /* Waterlooandcity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C8755542278BFA0C00AFDE1C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C8755544278BFA3100AFDE1C /* StatusViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C8755543278BFA1600AFDE1C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C8755546278BFA4B00AFDE1C /* StatusViewController.swift */,
+				C8755548278BFA5F00AFDE1C /* StatusView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -333,18 +416,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8755547278BFA4B00AFDE1C /* StatusViewController.swift in Sources */,
+				C875555F278BFBA200AFDE1C /* Northern.swift in Sources */,
+				C8755559278BFB5500AFDE1C /* Hammersmith.swift in Sources */,
+				C8755545278BFA3100AFDE1C /* StatusViewModel.swift in Sources */,
+				C875554D278BFAC800AFDE1C /* Line.swift in Sources */,
+				C875554B278BFAA800AFDE1C /* StatusResponse.swift in Sources */,
 				C875553F278BF23800AFDE1C /* BusStop.swift in Sources */,
+				C8755553278BFB1900AFDE1C /* Circle.swift in Sources */,
 				C81EB4D6278BC7CE00A053E4 /* AppDelegate.swift in Sources */,
+				C875555B278BFB6800AFDE1C /* Jubilee.swift in Sources */,
 				C81EB508278BCA2400A053E4 /* EndPoint.swift in Sources */,
 				C81EB516278BCCB100A053E4 /* NearByRespone.swift in Sources */,
 				C81EB51E278BD33B00A053E4 /* NearByView.swift in Sources */,
+				C8755555278BFB3000AFDE1C /* District.swift in Sources */,
+				C8755565278BFBE800AFDE1C /* Waterlooandcity.swift in Sources */,
 				C81EB50C278BCAC800A053E4 /* LocationUpdater.swift in Sources */,
+				C875554F278BFADA00AFDE1C /* bakerloo.swift in Sources */,
 				C81EB51A278BCEF400A053E4 /* NetworkManager.swift in Sources */,
+				C8755561278BFBBC00AFDE1C /* Piccadilly.swift in Sources */,
+				C8755551278BFAEF00AFDE1C /* central.swift in Sources */,
 				C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */,
 				C81EB514278BCC8400A053E4 /* NearByViewModel.swift in Sources */,
+				C875555D278BFB7B00AFDE1C /* Metropolitan.swift in Sources */,
+				C8755563278BFBD500AFDE1C /* Victoria.swift in Sources */,
 				C81EB51C278BCF7800A053E4 /* NetworkError.swift in Sources */,
+				C8755557278BFB4400AFDE1C /* Dlr.swift in Sources */,
 				C81EB4D8278BC7CE00A053E4 /* SceneDelegate.swift in Sources */,
 				C81EB512278BCC7500A053E4 /* NearByViewController.swift in Sources */,
+				C8755549278BFA5F00AFDE1C /* StatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

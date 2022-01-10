@@ -31,6 +31,17 @@ extension EndPoint {
             ]
         )
     }
+    
+    static func status(matching lat: String, lon: String, type: SearchType = .bus_stop) -> EndPoint {
+        return EndPoint(
+            path: "/v3/uk/tube/lines.json",
+            queryItems: [
+                URLQueryItem(name: "include_status", value: "true"),
+                URLQueryItem(name: "app_key", value: api_key),
+                URLQueryItem(name: "app_id", value: app_id),
+            ]
+        )
+    }
 }
 
 extension EndPoint {
