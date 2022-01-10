@@ -53,6 +53,18 @@ extension EndPoint {
             ]
         )
     }
+    
+    static func searchBusService(matching operators: String, line_name: String) -> EndPoint {
+        return EndPoint(
+            path: "/v3/uk/bus/services.json",
+            queryItems: [
+                URLQueryItem(name: "operator", value: operators),
+                URLQueryItem(name: "line_name", value: line_name),
+                URLQueryItem(name: "app_key", value: api_key),
+                URLQueryItem(name: "app_id", value: app_id),
+            ]
+        )
+    }
 }
 
 extension EndPoint {
