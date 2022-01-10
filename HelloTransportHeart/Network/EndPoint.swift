@@ -14,6 +14,8 @@ enum SearchType: String {
 struct EndPoint {
     let path: String
     let queryItems: [URLQueryItem]
+    static let api_key: String = ""
+    static let app_id: String = ""
 }
 
 extension EndPoint {
@@ -24,6 +26,8 @@ extension EndPoint {
                 URLQueryItem(name: "lat", value: lat),
                 URLQueryItem(name: "lon", value: lon),
                 URLQueryItem(name: "type", value: type.rawValue),
+                URLQueryItem(name: "app_key", value: api_key),
+                URLQueryItem(name: "app_id", value: app_id),
             ]
         )
     }
