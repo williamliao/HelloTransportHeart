@@ -59,14 +59,97 @@ class NearByView: UIView {
         
         for member in viewModel.nearByRespone.member {
             
-            let buswork = Buswork(title: member.name, coordinate: CLLocationCoordinate2D(latitude: member.latitude, longitude: member.longitude))
+            let buswork = Buswork(title: member.name, coordinate: CLLocationCoordinate2D(latitude: member.latitude, longitude: member.longitude), atcocode: member.atcocode)
             mapView.addAnnotation(buswork)
         }
     }
 }
 
 extension NearByView: MKMapViewDelegate {
+    // 1
+    func mapView(
+      _ mapView: MKMapView,
+      viewFor annotation: MKAnnotation
+    ) -> MKAnnotationView? {
+      // 2
+      guard let annotation = annotation as? Buswork else {
+        return nil
+      }
+      // 3
+      let identifier = "Buswork"
+      var view: MKMarkerAnnotationView
+      // 4
+      if let dequeuedView = mapView.dequeueReusableAnnotationView(
+        withIdentifier: identifier) as? MKMarkerAnnotationView {
+        dequeuedView.annotation = annotation
+        view = dequeuedView
+      } else {
+        // 5
+        view = MKMarkerAnnotationView(
+          annotation: annotation,
+          reuseIdentifier: identifier)
+        view.canShowCallout = true
+        view.calloutOffset = CGPoint(x: -5, y: 5)
+        view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+      return view
+    }
     
+    func mapView(
+      _ mapView: MKMapView,
+      annotationView view: MKAnnotationView,
+      calloutAccessoryControlTapped control: UIControl
+    ) {
+        guard let buswork = view.annotation as? Buswork else {
+            return
+        }
+
+        let timeVC = TimeTableViewController()
+        
+        Task {
+            await timeVC.fetchTimeTableData(atcode: buswork.atcocode)
+        }
+        
+        DispatchQueue.main.async {
+            self.presentTimeTableView(vc: timeVC)
+        }
+    }
+    
+    func presentTimeTableView(vc: UIViewController) {
+        
+        let keyWindow = UIApplication.shared.connectedScenes
+            .filter({ $0.activationState == .foregroundActive })
+            .map({ $0 as? UIWindowScene })
+            .compactMap({ $0 })
+            .first?.windows
+            .filter({ $0.isKeyWindow }).first
+      
+        if let currentTabController = keyWindow?.rootViewController as? UITabBarController {
+            
+            if let currentNavController = currentTabController.selectedViewController as? UINavigationController {
+             
+                if let currentVc = currentNavController.viewControllers.first {
+                    vc.modalPresentationStyle = .popover
+                    if let pop = vc.popoverPresentationController {
+                        let sheet = pop.adaptiveSheetPresentationController
+                        sheet.detents = [.medium(), .large()]
+                        
+                        sheet.prefersGrabberVisible = true
+                        sheet.preferredCornerRadius = 30.0
+                        sheet.largestUndimmedDetentIdentifier = .medium
+                        sheet.prefersEdgeAttachedInCompactHeight = true
+                        sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+                    }
+                    
+                    currentVc.present(vc, animated: true)
+                }
+                
+                
+            }
+            
+            
+        }
+    }
 }
 
 private extension MKMapView {

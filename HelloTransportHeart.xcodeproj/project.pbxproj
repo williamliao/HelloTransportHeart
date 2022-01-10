@@ -42,6 +42,11 @@
 		C8755561278BFBBC00AFDE1C /* Piccadilly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755560278BFBBC00AFDE1C /* Piccadilly.swift */; };
 		C8755563278BFBD500AFDE1C /* Victoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755562278BFBD500AFDE1C /* Victoria.swift */; };
 		C8755565278BFBE800AFDE1C /* Waterlooandcity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755564278BFBE800AFDE1C /* Waterlooandcity.swift */; };
+		C8755567278C163F00AFDE1C /* TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755566278C163F00AFDE1C /* TimeTable.swift */; };
+		C875556D278C200200AFDE1C /* TimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875556C278C200200AFDE1C /* TimeTableView.swift */; };
+		C875556F278C200F00AFDE1C /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875556E278C200F00AFDE1C /* TimeTableViewController.swift */; };
+		C8755573278C203D00AFDE1C /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755572278C203D00AFDE1C /* TimeTableViewModel.swift */; };
+		C875557B278C327300AFDE1C /* TimeTableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875557A278C327300AFDE1C /* TimeTableCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +106,11 @@
 		C8755560278BFBBC00AFDE1C /* Piccadilly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piccadilly.swift; sourceTree = "<group>"; };
 		C8755562278BFBD500AFDE1C /* Victoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Victoria.swift; sourceTree = "<group>"; };
 		C8755564278BFBE800AFDE1C /* Waterlooandcity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waterlooandcity.swift; sourceTree = "<group>"; };
+		C8755566278C163F00AFDE1C /* TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTable.swift; sourceTree = "<group>"; };
+		C875556C278C200200AFDE1C /* TimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableView.swift; sourceTree = "<group>"; };
+		C875556E278C200F00AFDE1C /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
+		C8755572278C203D00AFDE1C /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
+		C875557A278C327300AFDE1C /* TimeTableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +161,7 @@
 		C81EB4D4278BC7CE00A053E4 /* HelloTransportHeart */ = {
 			isa = PBXGroup;
 			children = (
+				C8755568278C1FCC00AFDE1C /* TimeTable */,
 				C8755540278BF9FD00AFDE1C /* Status */,
 				C81EB50D278BCC2800A053E4 /* NearBy */,
 				C81EB50A278BCAB500A053E4 /* Share */,
@@ -285,6 +296,42 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C8755568278C1FCC00AFDE1C /* TimeTable */ = {
+			isa = PBXGroup;
+			children = (
+				C875556B278C1FE900AFDE1C /* Model */,
+				C875556A278C1FE000AFDE1C /* ViewModel */,
+				C8755569278C1FD900AFDE1C /* View */,
+			);
+			path = TimeTable;
+			sourceTree = "<group>";
+		};
+		C8755569278C1FD900AFDE1C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C875556C278C200200AFDE1C /* TimeTableView.swift */,
+				C875556E278C200F00AFDE1C /* TimeTableViewController.swift */,
+				C875557A278C327300AFDE1C /* TimeTableCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C875556A278C1FE000AFDE1C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C8755572278C203D00AFDE1C /* TimeTableViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C875556B278C1FE900AFDE1C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C8755566278C163F00AFDE1C /* TimeTable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -417,10 +464,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8755547278BFA4B00AFDE1C /* StatusViewController.swift in Sources */,
+				C8755567278C163F00AFDE1C /* TimeTable.swift in Sources */,
 				C875555F278BFBA200AFDE1C /* Northern.swift in Sources */,
 				C8755559278BFB5500AFDE1C /* Hammersmith.swift in Sources */,
 				C8755545278BFA3100AFDE1C /* StatusViewModel.swift in Sources */,
 				C875554D278BFAC800AFDE1C /* Line.swift in Sources */,
+				C875557B278C327300AFDE1C /* TimeTableCollectionViewCell.swift in Sources */,
 				C875554B278BFAA800AFDE1C /* StatusResponse.swift in Sources */,
 				C875553F278BF23800AFDE1C /* BusStop.swift in Sources */,
 				C8755553278BFB1900AFDE1C /* Circle.swift in Sources */,
@@ -429,11 +478,14 @@
 				C81EB508278BCA2400A053E4 /* EndPoint.swift in Sources */,
 				C81EB516278BCCB100A053E4 /* NearByRespone.swift in Sources */,
 				C81EB51E278BD33B00A053E4 /* NearByView.swift in Sources */,
+				C875556F278C200F00AFDE1C /* TimeTableViewController.swift in Sources */,
 				C8755555278BFB3000AFDE1C /* District.swift in Sources */,
 				C8755565278BFBE800AFDE1C /* Waterlooandcity.swift in Sources */,
+				C8755573278C203D00AFDE1C /* TimeTableViewModel.swift in Sources */,
 				C81EB50C278BCAC800A053E4 /* LocationUpdater.swift in Sources */,
 				C875554F278BFADA00AFDE1C /* bakerloo.swift in Sources */,
 				C81EB51A278BCEF400A053E4 /* NetworkManager.swift in Sources */,
+				C875556D278C200200AFDE1C /* TimeTableView.swift in Sources */,
 				C8755561278BFBBC00AFDE1C /* Piccadilly.swift in Sources */,
 				C8755551278BFAEF00AFDE1C /* central.swift in Sources */,
 				C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */,

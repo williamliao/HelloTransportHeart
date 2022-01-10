@@ -10,16 +10,17 @@ import CoreLocation
 import MapKit
 
 class Buswork: NSObject, MKAnnotation {
-  let title: String?
-  let coordinate: CLLocationCoordinate2D
+    let title: String?
+    let coordinate: CLLocationCoordinate2D
+    let atcocode: String
 
-  init(
-    title: String?,
-    coordinate: CLLocationCoordinate2D
-  ) {
-    self.title = title
-    self.coordinate = coordinate
-
-    super.init()
-  }
+    init(
+        title: String?,
+        coordinate: CLLocationCoordinate2D,
+        atcocode: String) {
+        self.title = title
+        self.coordinate = coordinate
+        self.atcocode = atcocode
+        super.init()
+    }
 }
