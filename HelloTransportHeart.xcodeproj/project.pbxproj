@@ -9,13 +9,18 @@
 /* Begin PBXBuildFile section */
 		C81EB4D6278BC7CE00A053E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB4D5278BC7CE00A053E4 /* AppDelegate.swift */; };
 		C81EB4D8278BC7CE00A053E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB4D7278BC7CE00A053E4 /* SceneDelegate.swift */; };
-		C81EB4DA278BC7CE00A053E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB4D9278BC7CE00A053E4 /* ViewController.swift */; };
 		C81EB4DD278BC7CE00A053E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81EB4DB278BC7CE00A053E4 /* Main.storyboard */; };
 		C81EB4DF278BC7D000A053E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C81EB4DE278BC7D000A053E4 /* Assets.xcassets */; };
 		C81EB4E2278BC7D000A053E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81EB4E0278BC7D000A053E4 /* LaunchScreen.storyboard */; };
 		C81EB4ED278BC7D000A053E4 /* HelloTransportHeartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB4EC278BC7D000A053E4 /* HelloTransportHeartTests.swift */; };
 		C81EB4F7278BC7D000A053E4 /* HelloTransportHeartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB4F6278BC7D000A053E4 /* HelloTransportHeartUITests.swift */; };
 		C81EB4F9278BC7D000A053E4 /* HelloTransportHeartUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB4F8278BC7D000A053E4 /* HelloTransportHeartUITestsLaunchTests.swift */; };
+		C81EB508278BCA2400A053E4 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB506278BCA2400A053E4 /* EndPoint.swift */; };
+		C81EB509278BCA2400A053E4 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB507278BCA2400A053E4 /* DataLoader.swift */; };
+		C81EB50C278BCAC800A053E4 /* LocationUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB50B278BCAC800A053E4 /* LocationUpdater.swift */; };
+		C81EB512278BCC7500A053E4 /* NearByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB511278BCC7500A053E4 /* NearByViewController.swift */; };
+		C81EB514278BCC8400A053E4 /* NearByViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB513278BCC8400A053E4 /* NearByViewModel.swift */; };
+		C81EB516278BCCB100A053E4 /* NearByRespone.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB515278BCCB100A053E4 /* NearByRespone.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +44,6 @@
 		C81EB4D2278BC7CE00A053E4 /* HelloTransportHeart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloTransportHeart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81EB4D5278BC7CE00A053E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C81EB4D7278BC7CE00A053E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C81EB4D9278BC7CE00A053E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C81EB4DC278BC7CE00A053E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C81EB4DE278BC7D000A053E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C81EB4E1278BC7D000A053E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,12 @@
 		C81EB4F2278BC7D000A053E4 /* HelloTransportHeartUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloTransportHeartUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81EB4F6278BC7D000A053E4 /* HelloTransportHeartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloTransportHeartUITests.swift; sourceTree = "<group>"; };
 		C81EB4F8278BC7D000A053E4 /* HelloTransportHeartUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloTransportHeartUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C81EB506278BCA2400A053E4 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		C81EB507278BCA2400A053E4 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		C81EB50B278BCAC800A053E4 /* LocationUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUpdater.swift; sourceTree = "<group>"; };
+		C81EB511278BCC7500A053E4 /* NearByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByViewController.swift; sourceTree = "<group>"; };
+		C81EB513278BCC8400A053E4 /* NearByViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByViewModel.swift; sourceTree = "<group>"; };
+		C81EB515278BCCB100A053E4 /* NearByRespone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByRespone.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +109,11 @@
 		C81EB4D4278BC7CE00A053E4 /* HelloTransportHeart */ = {
 			isa = PBXGroup;
 			children = (
+				C81EB50D278BCC2800A053E4 /* NearBy */,
+				C81EB50A278BCAB500A053E4 /* Share */,
+				C81EB505278BCA1500A053E4 /* Network */,
 				C81EB4D5278BC7CE00A053E4 /* AppDelegate.swift */,
 				C81EB4D7278BC7CE00A053E4 /* SceneDelegate.swift */,
-				C81EB4D9278BC7CE00A053E4 /* ViewController.swift */,
 				C81EB4DB278BC7CE00A053E4 /* Main.storyboard */,
 				C81EB4DE278BC7D000A053E4 /* Assets.xcassets */,
 				C81EB4E0278BC7D000A053E4 /* LaunchScreen.storyboard */,
@@ -125,6 +137,57 @@
 				C81EB4F8278BC7D000A053E4 /* HelloTransportHeartUITestsLaunchTests.swift */,
 			);
 			path = HelloTransportHeartUITests;
+			sourceTree = "<group>";
+		};
+		C81EB505278BCA1500A053E4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C81EB507278BCA2400A053E4 /* DataLoader.swift */,
+				C81EB506278BCA2400A053E4 /* EndPoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C81EB50A278BCAB500A053E4 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				C81EB50B278BCAC800A053E4 /* LocationUpdater.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		C81EB50D278BCC2800A053E4 /* NearBy */ = {
+			isa = PBXGroup;
+			children = (
+				C81EB510278BCC5600A053E4 /* View */,
+				C81EB50F278BCC4800A053E4 /* ViewModel */,
+				C81EB50E278BCC4200A053E4 /* Model */,
+			);
+			path = NearBy;
+			sourceTree = "<group>";
+		};
+		C81EB50E278BCC4200A053E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C81EB515278BCCB100A053E4 /* NearByRespone.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C81EB50F278BCC4800A053E4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C81EB513278BCC8400A053E4 /* NearByViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C81EB510278BCC5600A053E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C81EB511278BCC7500A053E4 /* NearByViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +321,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C81EB4DA278BC7CE00A053E4 /* ViewController.swift in Sources */,
+				C81EB509278BCA2400A053E4 /* DataLoader.swift in Sources */,
 				C81EB4D6278BC7CE00A053E4 /* AppDelegate.swift in Sources */,
+				C81EB508278BCA2400A053E4 /* EndPoint.swift in Sources */,
+				C81EB516278BCCB100A053E4 /* NearByRespone.swift in Sources */,
+				C81EB50C278BCAC800A053E4 /* LocationUpdater.swift in Sources */,
+				C81EB514278BCC8400A053E4 /* NearByViewModel.swift in Sources */,
 				C81EB4D8278BC7CE00A053E4 /* SceneDelegate.swift in Sources */,
+				C81EB512278BCC7500A053E4 /* NearByViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
