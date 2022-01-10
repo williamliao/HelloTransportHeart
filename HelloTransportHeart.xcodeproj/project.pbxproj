@@ -16,11 +16,11 @@
 		C81EB4F7278BC7D000A053E4 /* HelloTransportHeartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB4F6278BC7D000A053E4 /* HelloTransportHeartUITests.swift */; };
 		C81EB4F9278BC7D000A053E4 /* HelloTransportHeartUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB4F8278BC7D000A053E4 /* HelloTransportHeartUITestsLaunchTests.swift */; };
 		C81EB508278BCA2400A053E4 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB506278BCA2400A053E4 /* EndPoint.swift */; };
-		C81EB509278BCA2400A053E4 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB507278BCA2400A053E4 /* DataLoader.swift */; };
 		C81EB50C278BCAC800A053E4 /* LocationUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB50B278BCAC800A053E4 /* LocationUpdater.swift */; };
 		C81EB512278BCC7500A053E4 /* NearByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB511278BCC7500A053E4 /* NearByViewController.swift */; };
 		C81EB514278BCC8400A053E4 /* NearByViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB513278BCC8400A053E4 /* NearByViewModel.swift */; };
 		C81EB516278BCCB100A053E4 /* NearByRespone.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB515278BCCB100A053E4 /* NearByRespone.swift */; };
+		C81EB51A278BCEF400A053E4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB519278BCEF400A053E4 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,11 +54,11 @@
 		C81EB4F6278BC7D000A053E4 /* HelloTransportHeartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloTransportHeartUITests.swift; sourceTree = "<group>"; };
 		C81EB4F8278BC7D000A053E4 /* HelloTransportHeartUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloTransportHeartUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C81EB506278BCA2400A053E4 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
-		C81EB507278BCA2400A053E4 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		C81EB50B278BCAC800A053E4 /* LocationUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUpdater.swift; sourceTree = "<group>"; };
 		C81EB511278BCC7500A053E4 /* NearByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByViewController.swift; sourceTree = "<group>"; };
 		C81EB513278BCC8400A053E4 /* NearByViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByViewModel.swift; sourceTree = "<group>"; };
 		C81EB515278BCCB100A053E4 /* NearByRespone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByRespone.swift; sourceTree = "<group>"; };
+		C81EB519278BCEF400A053E4 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +142,8 @@
 		C81EB505278BCA1500A053E4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				C81EB507278BCA2400A053E4 /* DataLoader.swift */,
 				C81EB506278BCA2400A053E4 /* EndPoint.swift */,
+				C81EB519278BCEF400A053E4 /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -321,11 +321,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C81EB509278BCA2400A053E4 /* DataLoader.swift in Sources */,
 				C81EB4D6278BC7CE00A053E4 /* AppDelegate.swift in Sources */,
 				C81EB508278BCA2400A053E4 /* EndPoint.swift in Sources */,
 				C81EB516278BCCB100A053E4 /* NearByRespone.swift in Sources */,
 				C81EB50C278BCAC800A053E4 /* LocationUpdater.swift in Sources */,
+				C81EB51A278BCEF400A053E4 /* NetworkManager.swift in Sources */,
 				C81EB514278BCC8400A053E4 /* NearByViewModel.swift in Sources */,
 				C81EB4D8278BC7CE00A053E4 /* SceneDelegate.swift in Sources */,
 				C81EB512278BCC7500A053E4 /* NearByViewController.swift in Sources */,
