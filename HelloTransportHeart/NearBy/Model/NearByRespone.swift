@@ -7,6 +7,20 @@
 
 import Foundation
 
-struct NearByRespone {
-    
+struct NearByRespone: Codable {
+    let request_time: String
+    let source: String
+    let acknowledgements: String
+    let member: [Member]
+}
+
+struct Member: Codable {
+    let type: String
+    let name: String
+    let latitude: Int
+    let longitude: Int
+    let accuracy: Int
+    let description: String
+    let atcocode: String
+    let distance: String
 }
