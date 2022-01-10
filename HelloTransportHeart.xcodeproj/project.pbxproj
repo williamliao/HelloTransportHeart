@@ -47,6 +47,7 @@
 		C875556F278C200F00AFDE1C /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875556E278C200F00AFDE1C /* TimeTableViewController.swift */; };
 		C8755573278C203D00AFDE1C /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755572278C203D00AFDE1C /* TimeTableViewModel.swift */; };
 		C875557B278C327300AFDE1C /* TimeTableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875557A278C327300AFDE1C /* TimeTableCollectionViewCell.swift */; };
+		C875557F278C3D7100AFDE1C /* BusServiceRespone.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875557E278C3D7100AFDE1C /* BusServiceRespone.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		C875556E278C200F00AFDE1C /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
 		C8755572278C203D00AFDE1C /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
 		C875557A278C327300AFDE1C /* TimeTableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableCollectionViewCell.swift; sourceTree = "<group>"; };
+		C875557E278C3D7100AFDE1C /* BusServiceRespone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusServiceRespone.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,8 +338,17 @@
 		C875557C278C3CA800AFDE1C /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				C875557D278C3D6200AFDE1C /* Model */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		C875557D278C3D6200AFDE1C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C875557E278C3D7100AFDE1C /* BusServiceRespone.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,6 +505,7 @@
 				C875554F278BFADA00AFDE1C /* bakerloo.swift in Sources */,
 				C81EB51A278BCEF400A053E4 /* NetworkManager.swift in Sources */,
 				C875556D278C200200AFDE1C /* TimeTableView.swift in Sources */,
+				C875557F278C3D7100AFDE1C /* BusServiceRespone.swift in Sources */,
 				C8755561278BFBBC00AFDE1C /* Piccadilly.swift in Sources */,
 				C8755551278BFAEF00AFDE1C /* central.swift in Sources */,
 				C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */,
