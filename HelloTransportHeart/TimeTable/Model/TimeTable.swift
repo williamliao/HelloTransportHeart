@@ -34,6 +34,16 @@ struct TimeTableRespone: Codable {
     }
 }
 
+extension TimeTableRespone: Hashable, Equatable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(atcocode)
+    }
+
+    static func == (lhs: TimeTableRespone, rhs: TimeTableRespone) -> Bool {
+        return lhs.atcocode == rhs.atcocode
+    }
+}
+
 struct Location:Codable {
     let type: String
     let coordinates: [Double]
@@ -70,5 +80,18 @@ struct BusItem: Codable {
         case best_departure_estimate
         case dir
         case source
+    }
+}
+
+extension BusItem: Hashable, Equatable {
+    static func == (lhs: BusItem, rhs: BusItem) -> Bool {
+        guard lhs.id == rhs.id
+        else { return false }
+        
+        return true
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
