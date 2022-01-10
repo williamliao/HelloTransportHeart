@@ -8,5 +8,36 @@
 import Foundation
 
 class StatusViewModel {
+    var showError: ((_ error:NetworkError) -> Void)?
+    var reloadMapView: (() -> Void)?
+    private let networkManager: NetworkManager
+    var respone: StatusResponse!
     
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+    }
+  
+    func fetchStatusData() async {
+       
+        do {
+            let result = try await networkManager.fetch(EndPoint.status(), decode: { json -> StatusResponse? in
+                guard let feedResult = json as? StatusResponse else { return  nil }
+                return feedResult
+            })
+            
+            switch result {
+                case .success(let res):
+                    print("fetchStatusData \(res)")
+                    respone = res
+                    reloadMapView?()
+                case .failure(let error):
+                    print("fetchStatusData error \(error)")
+                    showError?(error)
+            }
+            
+        }  catch  {
+            print("fetchStatusData error \(error)")
+            showError?(error as? NetworkError ?? NetworkError.unKnown)
+        }
+    }
 }

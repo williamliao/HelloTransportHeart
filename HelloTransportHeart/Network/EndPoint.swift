@@ -32,7 +32,7 @@ extension EndPoint {
         )
     }
     
-    static func status(matching lat: String, lon: String, type: SearchType = .bus_stop) -> EndPoint {
+    static func status() -> EndPoint {
         return EndPoint(
             path: "/v3/uk/tube/lines.json",
             queryItems: [

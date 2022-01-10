@@ -8,5 +8,20 @@
 import UIKit
 
 class StatusView: UIView {
-
+    
+    private let viewModel: StatusViewModel
+    
+    init(viewModel: StatusViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
+        createView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func createView() {
+        
+    }
 }

@@ -16,4 +16,26 @@ class StatusViewController: UIViewController {
         super.viewDidLoad()
         
     }
+    
+    func renderView() {
+        
+        viewModel = StatusViewModel(networkManager: NetworkManager())
+        
+        Task {
+            await viewModel.fetchStatusData()
+        }
+        
+        self.title = "Status"
+        statusView = StatusView(viewModel: viewModel)
+        statusView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(statusView)
+        
+        NSLayoutConstraint.activate([
+            statusView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            statusView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            statusView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            statusView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+        ])
+    }
 }
