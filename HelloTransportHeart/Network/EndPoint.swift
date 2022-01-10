@@ -9,6 +9,7 @@ import Foundation
 
 enum SearchType: String {
     case bus_stop
+    case train_station
 }
 
 struct EndPoint {
@@ -26,6 +27,16 @@ extension EndPoint {
                 URLQueryItem(name: "lat", value: lat),
                 URLQueryItem(name: "lon", value: lon),
                 URLQueryItem(name: "type", value: type.rawValue),
+                URLQueryItem(name: "app_key", value: api_key),
+                URLQueryItem(name: "app_id", value: app_id),
+            ]
+        )
+    }
+    
+    static func showTimeTable(matching atcocode: String, type: SearchType = .bus_stop) -> EndPoint {
+        return EndPoint(
+            path: "/v3/uk/bus/stop/\(atcocode)/timetable.json",
+            queryItems: [
                 URLQueryItem(name: "app_key", value: api_key),
                 URLQueryItem(name: "app_id", value: app_id),
             ]
