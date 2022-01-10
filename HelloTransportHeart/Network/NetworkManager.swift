@@ -66,7 +66,12 @@ extension NetworkManager {
             return Result.failure(NetworkError.invalidToken)
         } catch {
             print("fetch error \(error)")
-            return Result.failure(NetworkError.unKnown)
+            if let err = error as? NetworkError {
+                return Result.failure(err)
+            } else {
+                return Result.failure(NetworkError.unKnown)
+            }
+            
         }
     }
     

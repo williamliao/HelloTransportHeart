@@ -17,10 +17,10 @@ struct NearByRespone: Codable {
 struct Member: Codable {
     let type: String
     let name: String
-    let latitude: Int
-    let longitude: Int
+    let latitude: Double
+    let longitude: Double
     let accuracy: Int
     let description: String
     let atcocode: String
-    let distance: String
+    let distance: Double
 }

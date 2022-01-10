@@ -24,6 +24,7 @@
 		C81EB51C278BCF7800A053E4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB51B278BCF7800A053E4 /* NetworkError.swift */; };
 		C81EB51E278BD33B00A053E4 /* NearByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB51D278BD33B00A053E4 /* NearByView.swift */; };
 		C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553C278BE97A00AFDE1C /* LocationClient.swift */; };
+		C875553F278BF23800AFDE1C /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553E278BF23800AFDE1C /* BusStop.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		C81EB51B278BCF7800A053E4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		C81EB51D278BD33B00A053E4 /* NearByView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByView.swift; sourceTree = "<group>"; };
 		C875553C278BE97A00AFDE1C /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
+		C875553E278BF23800AFDE1C /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				C81EB515278BCCB100A053E4 /* NearByRespone.swift */,
+				C875553E278BF23800AFDE1C /* BusStop.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C875553F278BF23800AFDE1C /* BusStop.swift in Sources */,
 				C81EB4D6278BC7CE00A053E4 /* AppDelegate.swift in Sources */,
 				C81EB508278BCA2400A053E4 /* EndPoint.swift in Sources */,
 				C81EB516278BCCB100A053E4 /* NearByRespone.swift in Sources */,

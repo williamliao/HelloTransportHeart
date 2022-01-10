@@ -19,13 +19,14 @@ class NearByViewController: UIViewController {
 
     func renderView() {
         
+        viewModel = NearByViewModel(networkManager: NetworkManager(), locationClient: LocalLocationClient())
+        
         let locationUpdater = LocationUpdater()
         Task {
             await locationUpdater.beginTracking()
-            
         }
-
-        viewModel = NearByViewModel(networkManager: NetworkManager(), locationClient: LocalLocationClient())
+        
+        viewModel.fetchNearByData()
         
         self.title = "BusStop"
         nearByView = NearByView(viewModel: viewModel)

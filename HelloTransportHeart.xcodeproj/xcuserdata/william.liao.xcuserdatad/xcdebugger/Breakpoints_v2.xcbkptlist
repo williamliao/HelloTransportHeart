@@ -7,64 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "777DB927-C802-4B5A-8A7E-5CFF387C86FD"
+            uuid = "91BEABA6-8185-4D38-A780-AF30A1FA8A8A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HelloTransportHeart/NearBy/ViewModel/NearByViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "fetchNearByData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "71F47262-1BF3-4282-8A21-3278AB918D16"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HelloTransportHeart/NearBy/View/NearByViewController.swift"
+            filePath = "HelloTransportHeart/NearBy/ViewModel/NearByViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "renderView()"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "fetchNearByData()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "777DB927-C802-4B5A-8A7E-5CFF387C86FD - 7b3d044e5f99b0ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable () async -&gt; () in HelloTransportHeart.NearByViewController.renderView() -&gt; ()"
-                  moduleName = "HelloTransportHeart"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/william.liao/Documents/iOS_Practice/HelloTransportHeart/HelloTransportHeart/NearBy/View/NearByViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  uuid = "777DB927-C802-4B5A-8A7E-5CFF387C86FD - 6be29125d96ed275"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) await resume partial function for closure #1 @Sendable () async -&gt; () in HelloTransportHeart.NearByViewController.renderView() -&gt; ()"
-                  moduleName = "HelloTransportHeart"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/william.liao/Documents/iOS_Practice/HelloTransportHeart/HelloTransportHeart/NearBy/View/NearByViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "777DB927-C802-4B5A-8A7E-5CFF387C86FD - ead46dae27a47f83"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) suspend resume partial function for closure #1 @Sendable () async -&gt; () in HelloTransportHeart.NearByViewController.renderView() -&gt; ()"
-                  moduleName = "HelloTransportHeart"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/william.liao/Documents/iOS_Practice/HelloTransportHeart/HelloTransportHeart/NearBy/View/NearByViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "92">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "54A28E6F-471A-4962-BC2C-8725959F153B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HelloTransportHeart/NearBy/ViewModel/NearByViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "fetchNearByData()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -43,11 +43,24 @@ class NearByView: UIView {
             mapView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
             mapView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
         ])
+        
+        viewModel.reloadMapView = { [weak self] in
+            DispatchQueue.main.async {
+                self?.addNearByStops()
+            }
+        }
     }
     
     func addNearByStops() {
-        Task {
-            await viewModel.fetchNearByData()
+        
+        if viewModel.nearByRespone.member.isEmpty {
+            return
+        }
+        
+        for member in viewModel.nearByRespone.member {
+            
+            let buswork = Buswork(title: member.name, coordinate: CLLocationCoordinate2D(latitude: member.latitude, longitude: member.longitude))
+            mapView.addAnnotation(buswork)
         }
     }
 }
