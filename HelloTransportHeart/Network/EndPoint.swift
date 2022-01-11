@@ -65,6 +65,18 @@ extension EndPoint {
             ]
         )
     }
+    
+    static func showBusFullTimeTable(matching operators: BusService.OperatorType = .FBRI, service: String) -> EndPoint {
+        return EndPoint(
+            path: "/v3/uk/bus/service_timetables.json",
+            queryItems: [
+                URLQueryItem(name: "operator", value: operators.rawValue),
+                URLQueryItem(name: "service", value: service),
+                URLQueryItem(name: "app_key", value: api_key),
+                URLQueryItem(name: "app_id", value: app_id),
+            ]
+        )
+    }
 }
 
 extension EndPoint {
