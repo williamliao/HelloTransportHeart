@@ -33,7 +33,7 @@ class TimeTableViewController: UIViewController {
     
     func fetchTimeTableData(atcode: String) async {
         Task {
-            await viewModel.fetchTimeTableData(atcode: atcode)
+            await viewModel.fetchStopTimeTableData(atcode: atcode)
         }
     }
     

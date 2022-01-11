@@ -23,6 +23,7 @@
 		C81EB51A278BCEF400A053E4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB519278BCEF400A053E4 /* NetworkManager.swift */; };
 		C81EB51C278BCF7800A053E4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB51B278BCF7800A053E4 /* NetworkError.swift */; };
 		C81EB51E278BD33B00A053E4 /* NearByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB51D278BD33B00A053E4 /* NearByView.swift */; };
+		C83645F4278D16CB00D19F11 /* BusServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83645F3278D16CB00D19F11 /* BusServiceCell.swift */; };
 		C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553C278BE97A00AFDE1C /* LocationClient.swift */; };
 		C875553F278BF23800AFDE1C /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553E278BF23800AFDE1C /* BusStop.swift */; };
 		C8755545278BFA3100AFDE1C /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755544278BFA3100AFDE1C /* StatusViewModel.swift */; };
@@ -91,6 +92,7 @@
 		C81EB519278BCEF400A053E4 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C81EB51B278BCF7800A053E4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		C81EB51D278BD33B00A053E4 /* NearByView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByView.swift; sourceTree = "<group>"; };
+		C83645F3278D16CB00D19F11 /* BusServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusServiceCell.swift; sourceTree = "<group>"; };
 		C875553C278BE97A00AFDE1C /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 		C875553E278BF23800AFDE1C /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 		C8755544278BFA3100AFDE1C /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			children = (
 				C8755584278C3F7700AFDE1C /* BusServiceView.swift */,
 				C8755586278C3F8100AFDE1C /* BusServiceViewController.swift */,
+				C83645F3278D16CB00D19F11 /* BusServiceCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				C875557F278C3D7100AFDE1C /* BusServiceRespone.swift in Sources */,
 				C8755561278BFBBC00AFDE1C /* Piccadilly.swift in Sources */,
 				C8755551278BFAEF00AFDE1C /* central.swift in Sources */,
+				C83645F4278D16CB00D19F11 /* BusServiceCell.swift in Sources */,
 				C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */,
 				C8755587278C3F8100AFDE1C /* BusServiceViewController.swift in Sources */,
 				C81EB514278BCC8400A053E4 /* NearByViewModel.swift in Sources */,

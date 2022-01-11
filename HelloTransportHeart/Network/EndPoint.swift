@@ -33,7 +33,7 @@ extension EndPoint {
         )
     }
     
-    static func showTimeTable(matching atcocode: String, type: SearchType = .bus_stop) -> EndPoint {
+    static func showStopTimeTable(matching atcocode: String, type: SearchType = .bus_stop) -> EndPoint {
         return EndPoint(
             path: "/v3/uk/bus/stop/\(atcocode)/timetable.json",
             queryItems: [

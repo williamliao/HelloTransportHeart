@@ -96,8 +96,8 @@ class TimeTableView: UIView {
     
     func updateSnapShot() {
         
-        let keys = self.viewModel.timeTableRespone.departures.keys.sorted()
-        let array = keys.map{ self.viewModel.timeTableRespone.departures[$0]!}
+        let keys = self.viewModel.stopTimeTableRespone.departures.keys.sorted()
+        let array = keys.map{ self.viewModel.stopTimeTableRespone.departures[$0]!}
         
         var snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, BusItem>()
         snapshot.appendSections(SectionLayoutKind.allCases)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TimeTableRespone: Codable {
+struct StopTimeTableRespone: Codable {
     let atcocode: String
     let request_time: String
     let smscode: String
@@ -34,12 +34,12 @@ struct TimeTableRespone: Codable {
     }
 }
 
-extension TimeTableRespone: Hashable, Equatable {
+extension StopTimeTableRespone: Hashable, Equatable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(atcocode)
     }
 
-    static func == (lhs: TimeTableRespone, rhs: TimeTableRespone) -> Bool {
+    static func == (lhs: StopTimeTableRespone, rhs: StopTimeTableRespone) -> Bool {
         return lhs.atcocode == rhs.atcocode
     }
 }
@@ -94,4 +94,48 @@ extension BusItem: Hashable, Equatable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
+}
+
+struct fullTimeTableRespone: Codable {
+    let id: String
+    let member: [FullBusMember]
+}
+
+struct FullBusMember: Codable {
+    let request_time: String
+    let operators: String
+    let operator_name: String
+    let line: String
+    let line_name: String
+    let origin_atcocode: String
+    let dir: String
+    let id: String
+    let stops: [Stops]
+    
+    private enum CodingKeys : String, CodingKey {
+        case request_time
+        case id
+        case operators = "operator"
+        case operator_name
+        case line
+        case line_name
+        case origin_atcocode
+        case dir
+        case stops
+    }
+}
+
+struct Stops: Codable {
+    let time: String
+    let date: String
+    let atcocode: String
+    let name: String
+    let stop_name: String
+    let smscode: String
+    let locality: String
+    let bearing: String
+    let indicator: String
+    let latitude: Double
+    let longitude: Double
+    let timing_point: Bool
 }
