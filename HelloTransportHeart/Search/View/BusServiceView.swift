@@ -62,7 +62,7 @@ extension BusServiceView {
     func configureTableView() {
        
         tableView = UITableView()
-        //tableView.delegate = self
+        tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableView.automaticDimension
@@ -139,6 +139,38 @@ extension BusServiceView {
         searchDataSource = UITableViewDiffableDataSource<Section, BusMember>(tableView: tableView, cellProvider: { (tableView, indexPath, item) -> BusServiceCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: BusServiceCell.reuseIdentifier, for: indexPath) as? BusServiceCell
             cell?.configureCell(member: item)
+            
+            
+            cell?.onInBoundAction = { [self] in
+                guard let category = BusService.OperatorType(rawValue:
+                                                                item.operators.code) else {
+                    return
+                }
+                
+                //await viewModel.fetchFullTimeData(type: category, service: item.line_name, direction: "inbound")
+                
+                let timeVC = TimeTableViewController(sourceType: .fullTime)
+                timeVC.fetchFullTimeData(type: category, service: item.line_name, direction: "inbound")
+                self.presentTimeTableView(vc: timeVC)
+            }
+            
+            cell?.onOutBoundAction = { [self] in
+                Task {
+                    
+                    guard let category = BusService.OperatorType(rawValue:
+                                                                    item.operators.code) else {
+                        return
+                    }
+                    
+                    await viewModel.fetchFullTimeData(type: category, service: item.line_name, direction: "outbound")
+                }
+                
+                let timeVC = TimeTableViewController(sourceType: .fullTime)
+                //timeVC.viewModel.fullTimeTableRespone = viewModel.fullTimeRespone
+                //timeVC.viewModel.reloadCollectionView?()
+                self.presentTimeTableView(vc: timeVC)
+            }
+            
             return cell
         })
     }
@@ -152,19 +184,7 @@ extension BusServiceView: UITableViewDelegate, UIScrollViewDelegate  {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastElement = tableView.numberOfRows(inSection: indexPath.section) - 1
         cellHeightsDictionary[indexPath] = cell.frame.size.height
-        
-        if !viewModel.isFetching && indexPath.row == lastElement {
-            
-            isSpinnerLoading(isLoading: true)
-            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
-
-            self.tableView.tableFooterView = spinner
-            self.tableView.tableFooterView?.isHidden = false
-            
-            //viewModel.loadNextPage()
-        }
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -235,7 +255,7 @@ extension BusServiceView: UISearchBarDelegate {
             searchText.trimmingCharacters(in: whitespaceCharacterSet)
         
         closeSearchView()
-        applyInitialSnapshots()
+        //applyInitialSnapshots()
         isLoading(isLoading: true)
         
         Task {
@@ -274,5 +294,39 @@ extension BusServiceView {
     
     func showErrorToast(error: NetworkError) {
         print("showErrorToast \(error)")
+    }
+    
+    func presentTimeTableView(vc: UIViewController) {
+        
+        let keyWindow = UIApplication.shared.connectedScenes
+            .filter({ $0.activationState == .foregroundActive })
+            .map({ $0 as? UIWindowScene })
+            .compactMap({ $0 })
+            .first?.windows
+            .filter({ $0.isKeyWindow }).first
+      
+        if let currentTabController = keyWindow?.rootViewController as? UITabBarController {
+            
+            if let currentNavController = currentTabController.selectedViewController as? UINavigationController {
+             
+                if let currentVc = currentNavController.viewControllers.first {
+                    vc.modalPresentationStyle = .popover
+                    if let pop = vc.popoverPresentationController {
+                        let sheet = pop.adaptiveSheetPresentationController
+                        sheet.detents = [.medium(), .large()]
+                        
+                        sheet.prefersGrabberVisible = true
+                        sheet.preferredCornerRadius = 30.0
+                        sheet.largestUndimmedDetentIdentifier = .medium
+                        sheet.prefersEdgeAttachedInCompactHeight = true
+                        sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+                    }
+                    
+                    currentVc.present(vc, animated: true)
+                }
+                
+                
+            }
+        }
     }
 }

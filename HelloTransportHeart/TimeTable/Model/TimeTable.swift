@@ -125,6 +125,19 @@ struct FullBusMember: Codable {
     }
 }
 
+extension FullBusMember: Hashable, Equatable {
+    static func == (lhs: FullBusMember, rhs: FullBusMember) -> Bool {
+        guard lhs.id == rhs.id
+        else { return false }
+        
+        return true
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
 struct Stops: Codable {
     let time: String
     let date: String
@@ -138,4 +151,24 @@ struct Stops: Codable {
     let latitude: Double
     let longitude: Double
     let timing_point: Bool
+}
+
+extension Stops: Hashable, Equatable {
+    static func == (lhs: Stops, rhs: Stops) -> Bool {
+        guard lhs.atcocode == rhs.atcocode
+        else { return false }
+        
+        return true
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(atcocode)
+    }
+}
+
+struct TimeTableSource: Codable {
+    enum SourceType: Codable {
+        case stop
+        case fullTime
+    }
 }

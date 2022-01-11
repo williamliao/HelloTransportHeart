@@ -109,4 +109,11 @@ extension TimeTableCollectionViewCell {
         departureLabel.text = "Arrive: \(busItem.aimed_departure_time)"
         boundLabel.text = busItem.dir
     }
+    
+    func configurationCell(stop: Stops) {
+//        nameLabel.text = busItem.line_name
+//        dateLabel.text = busItem.date
+//        departureLabel.text = "Arrive: \(busItem.aimed_departure_time)"
+//        boundLabel.text = busItem.dir
+    }
 }

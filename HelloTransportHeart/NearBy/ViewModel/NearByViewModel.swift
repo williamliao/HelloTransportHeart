@@ -37,7 +37,7 @@ class NearByViewModel {
                 
                 switch result {
                     case .success(let res):
-                        print("fetchNearByData \(res)")
+                        //print("fetchNearByData \(res)")
                         nearByRespone = res
                         reloadMapView?()
                     case .failure(let error):

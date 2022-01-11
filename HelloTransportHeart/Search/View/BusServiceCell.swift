@@ -8,7 +8,10 @@
 import UIKit
 
 class BusServiceCell: UITableViewCell {
-
+    
+    var onInBoundAction: (() -> Void)?
+    var onOutBoundAction: (() -> Void)?
+   
     static var reuseIdentifier: String {
         return String(describing: BusServiceCell.self)
     }
@@ -24,26 +27,24 @@ class BusServiceCell: UITableViewCell {
         return label
     }()
     
-    let inBoundLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .label
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byTruncatingTail
-        label.textAlignment = .left
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    let inBoundButton: UIButton = {
+        var configuration = UIButton.Configuration.tinted()
+        configuration.baseBackgroundColor = .systemGreen
+        configuration.baseForegroundColor = .label
+        let button = UIButton(configuration: configuration, primaryAction: nil)
+        button.addTarget(self, action: #selector(inBoundOnTap), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
-    let outBoundLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .label
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byTruncatingTail
-        label.textAlignment = .left
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    let outBoundButton: UIButton = {
+        var configuration = UIButton.Configuration.tinted()
+        configuration.baseBackgroundColor = .systemGreen
+        configuration.baseForegroundColor = .label
+        let button = UIButton(configuration: configuration, primaryAction: nil)
+        button.addTarget(self, action: #selector(outBoundOnTap), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -59,16 +60,18 @@ class BusServiceCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         nameLabel.text = ""
-        inBoundLabel.text = ""
-        outBoundLabel.text = ""
+        inBoundButton.setTitle("", for: .normal)
+        outBoundButton.setTitle("", for: .normal)
+        inBoundButton.isHidden = false
+        outBoundButton.isHidden = false
     }
 }
 
 extension BusServiceCell {
     func configureView() {
         self.contentView.addSubview(nameLabel)
-        self.contentView.addSubview(inBoundLabel)
-        self.contentView.addSubview(outBoundLabel)
+        self.contentView.addSubview(inBoundButton)
+        self.contentView.addSubview(outBoundButton)
     }
     
     func configureConstraints() {
@@ -80,15 +83,12 @@ extension BusServiceCell {
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             nameLabel.heightAnchor.constraint(equalToConstant: 16),
             
-            inBoundLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            inBoundLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-            inBoundLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
-            inBoundLabel.heightAnchor.constraint(equalToConstant: 16),
+            inBoundButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            inBoundButton.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
             
-            outBoundLabel.leadingAnchor.constraint(equalTo: inBoundLabel.leadingAnchor),
-            outBoundLabel.topAnchor.constraint(equalTo: inBoundLabel.bottomAnchor, constant: 5),
-            outBoundLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-            outBoundLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            outBoundButton.leadingAnchor.constraint(equalTo: inBoundButton.leadingAnchor),
+            outBoundButton.topAnchor.constraint(equalTo: inBoundButton.bottomAnchor, constant: 5),
+            outBoundButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
         ])
     }
 }
@@ -107,10 +107,28 @@ extension BusServiceCell {
             boundType = "\(direction.name):"
             
             if boundType == "inbound:" {
-                inBoundLabel.text = "\(boundType)\(bound)"
+                inBoundButton.setTitle("\(boundType)\(bound)", for: .normal)
             } else{
-                outBoundLabel.text = "\(boundType)\(bound)"
+                outBoundButton.setTitle("\(boundType)\(bound)", for: .normal)
             }
         }
+        
+        if inBoundButton.currentTitle == nil || inBoundButton.currentTitle == "" {
+            inBoundButton.isHidden = true
+        }
+        
+        if outBoundButton.currentTitle == nil || outBoundButton.currentTitle == "" {
+            outBoundButton.isHidden = true
+        }
+    }
+}
+
+extension BusServiceCell {
+    @objc private func inBoundOnTap() {
+        onInBoundAction?()
+    }
+    
+    @objc private func outBoundOnTap() {
+        onOutBoundAction?()
     }
 }

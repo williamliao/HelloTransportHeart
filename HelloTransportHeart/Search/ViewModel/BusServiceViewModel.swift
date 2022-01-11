@@ -13,6 +13,7 @@ class BusServiceViewModel {
     var reloadTableView: (() -> Void)?
     private let networkManager: NetworkManager
     var respone: BusServiceRespone!
+    var fullTimeRespone: fullTimeTableRespone!
     private(set) var isFetching = false
     
     init(networkManager: NetworkManager) {
@@ -22,6 +23,10 @@ class BusServiceViewModel {
 
 extension BusServiceViewModel {
     func fetchData(operators: String, lineName: String) async {
+        
+        if isFetching {
+            return
+        }
         
         isFetching = true
         
@@ -34,7 +39,7 @@ extension BusServiceViewModel {
             
             switch result {
                 case .success(let res):
-                    print("fetchData \(res)")
+                    //print("fetchData \(res)")
                     respone = res
                     reloadTableView?()
                 case .failure(let error):
@@ -44,6 +49,30 @@ extension BusServiceViewModel {
             
         }  catch  {
             print("fetchData error \(error)")
+            showError?(error as? NetworkError ?? NetworkError.unKnown)
+        }
+    }
+    
+    func fetchFullTimeData(type: BusService.OperatorType, service: String, direction: String) async {
+        do {
+            let result = try await networkManager.fetch(EndPoint.showBusFullTimeTable(matching: type, service: service, direction: direction), decode: { [self] json -> fullTimeTableRespone? in
+                isFetching = false
+                guard let feedResult = json as? fullTimeTableRespone else { return  nil }
+                return feedResult
+            })
+            
+            switch result {
+                case .success(let res):
+                    print("fetchFullTimeData \(res)")
+                    fullTimeRespone = res
+                    reloadTableView?()
+                case .failure(let error):
+                    print("fetchFullTimeData error \(error)")
+                    showError?(error)
+            }
+            
+        }  catch  {
+            print("fetchFullTimeData error \(error)")
             showError?(error as? NetworkError ?? NetworkError.unKnown)
         }
     }

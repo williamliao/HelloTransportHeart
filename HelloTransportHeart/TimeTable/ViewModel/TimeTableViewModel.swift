@@ -13,9 +13,12 @@ class TimeTableViewModel {
     var reloadCollectionView: (() -> Void)?
     private let networkManager: NetworkManager
     var stopTimeTableRespone: StopTimeTableRespone!
+    var fullTimeTableRespone: fullTimeTableRespone!
+    var sourceType: TimeTableSource.SourceType
     
-    init(networkManager: NetworkManager) {
+    init(networkManager: NetworkManager, sourceType: TimeTableSource.SourceType) {
         self.networkManager = networkManager
+        self.sourceType = sourceType
     }
     
     func fetchStopTimeTableData(atcode: String) async {
@@ -38,6 +41,29 @@ class TimeTableViewModel {
             
         }  catch  {
             print("fetchTimeTableData error \(error)")
+            showError?(error as? NetworkError ?? NetworkError.unKnown)
+        }
+    }
+    
+    func fetchFullTimeData(type: BusService.OperatorType, service: String, direction: String) async {
+        do {
+            let result = try await networkManager.fetch(EndPoint.showBusFullTimeTable(matching: type, service: service, direction: direction), decode: { json -> fullTimeTableRespone? in
+                guard let feedResult = json as? fullTimeTableRespone else { return  nil }
+                return feedResult
+            })
+            
+            switch result {
+                case .success(let res):
+                    print("fetchFullTimeData \(res)")
+                    fullTimeTableRespone = res
+                    reloadCollectionView?()
+                case .failure(let error):
+                    print("fetchFullTimeData error \(error)")
+                    showError?(error)
+            }
+            
+        }  catch  {
+            print("fetchFullTimeData error \(error)")
             showError?(error as? NetworkError ?? NetworkError.unKnown)
         }
     }

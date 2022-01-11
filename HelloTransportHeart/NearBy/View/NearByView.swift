@@ -104,7 +104,7 @@ extension NearByView: MKMapViewDelegate {
             return
         }
 
-        let timeVC = TimeTableViewController()
+        let timeVC = TimeTableViewController(sourceType: .stop)
         
         Task {
             await timeVC.fetchTimeTableData(atcode: buswork.atcocode)

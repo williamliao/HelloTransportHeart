@@ -66,12 +66,17 @@ extension EndPoint {
         )
     }
     
-    static func showBusFullTimeTable(matching operators: BusService.OperatorType = .FBRI, service: String) -> EndPoint {
+    static func showBusFullTimeTable(matching operators: BusService.OperatorType = .FBRI, service: String, direction: String) -> EndPoint {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
         return EndPoint(
             path: "/v3/uk/bus/service_timetables.json",
             queryItems: [
                 URLQueryItem(name: "operator", value: operators.rawValue),
                 URLQueryItem(name: "service", value: service),
+                URLQueryItem(name: "direction", value: direction),
+                URLQueryItem(name: "date", value: formatter.string(from: Date())),
                 URLQueryItem(name: "app_key", value: api_key),
                 URLQueryItem(name: "app_id", value: app_id),
             ]

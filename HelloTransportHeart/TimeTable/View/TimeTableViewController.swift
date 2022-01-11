@@ -11,11 +11,21 @@ class TimeTableViewController: UIViewController {
     
     var viewModel: TimeTableViewModel!
     var timeTableView: TimeTableView!
-
+    var sourceType: TimeTableSource.SourceType
+    
+    init(sourceType: TimeTableSource.SourceType) {
+        self.sourceType = sourceType
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = TimeTableViewModel(networkManager: NetworkManager())
+        viewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: sourceType)
         
         self.title = "Time"
         timeTableView = TimeTableView(viewModel: viewModel)
@@ -37,7 +47,9 @@ class TimeTableViewController: UIViewController {
         }
     }
     
-    func presentExifView(vc: UIViewController) {
-        
+    func fetchFullTimeData(type: BusService.OperatorType, service: String, direction: String) {
+        Task {
+            await viewModel.fetchFullTimeData(type: type, service: service, direction: direction)
+        }
     }
 }
