@@ -10,11 +10,45 @@ import Foundation
 class BusServiceViewModel {
     
     var showError: ((_ error:NetworkError) -> Void)?
-    var reloadCollectionView: (() -> Void)?
+    var reloadTableView: (() -> Void)?
     private let networkManager: NetworkManager
     var respone: BusServiceRespone!
+    private(set) var isFetching = false
     
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
+    }
+}
+
+extension BusServiceViewModel {
+    func fetchData(operators: String, lineName: String) async {
+        
+        isFetching = true
+        
+        do {
+            let result = try await networkManager.fetch(EndPoint.searchBusService(matching: operators, line_name: lineName), decode: { [self] json -> BusServiceRespone? in
+                isFetching = false
+                guard let feedResult = json as? BusServiceRespone else { return  nil }
+                return feedResult
+            })
+            
+            switch result {
+                case .success(let res):
+                    print("fetchData \(res)")
+                    respone = res
+                    reloadTableView?()
+                case .failure(let error):
+                    print("fetchData error \(error)")
+                    showError?(error)
+            }
+            
+        }  catch  {
+            print("fetchData error \(error)")
+            showError?(error as? NetworkError ?? NetworkError.unKnown)
+        }
+    }
+    
+    func reset() {
+        isFetching = false
     }
 }

@@ -33,6 +33,16 @@ struct BusMember: Codable {
     }
 }
 
+extension BusMember: Hashable, Equatable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    static func == (lhs: BusMember, rhs: BusMember) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 struct Operators: Codable {
     let code: String
     let name: String
@@ -50,4 +60,41 @@ struct Directions: Codable {
 
 struct Destination: Codable {
     let description: String
+}
+
+struct BusService: Codable {
+    enum OperatorType: Codable {
+        case FBRI
+        case FPOT //First Potteries
+        case FLDS //First Leeds
+        case WRAY //Arriva Yorkshire
+        case SD //Stagecoach South West
+    }
+}
+
+extension BusService.OperatorType: CaseIterable { }
+
+extension BusService.OperatorType: RawRepresentable {
+    typealias RawValue = String
+
+    init?(rawValue: RawValue) {
+        switch rawValue {
+            case "FBRI": self = .FBRI
+            case "FPOT": self = .FPOT
+            case "FLDS": self = .FLDS
+            case "WRAY": self = .WRAY
+            case "SD": self = .SD
+            default: return nil
+        }
+    }
+
+    var rawValue: RawValue {
+        switch self {
+            case .FBRI: return "FBRI"
+            case .FPOT: return "FPOT"
+            case .FLDS: return "FLDS"
+            case .WRAY: return "WRAY"
+            case .SD: return "SD"
+        }
+    }
 }

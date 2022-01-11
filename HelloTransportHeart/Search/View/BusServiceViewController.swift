@@ -17,8 +17,8 @@ class BusServiceViewController: UIViewController {
         
         viewModel = BusServiceViewModel(networkManager: NetworkManager())
         
-        self.title = "Time"
-        busView = BusServiceView(viewModel: viewModel)
+        self.title = "Search"
+        busView = BusServiceView(viewModel: viewModel, navItem: self.navigationItem)
         busView.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(busView)
