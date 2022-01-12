@@ -18,8 +18,6 @@ class TimeTableViewModel {
     var busJourneyResponse: BusJourneyResponse!
     var sourceType: TimeTableSource.SourceType
     
-    private var loadingTask: Task<Void, Never>?
-    
     init(networkManager: NetworkManager, sourceType: TimeTableSource.SourceType) {
         self.networkManager = networkManager
         self.sourceType = sourceType
@@ -83,12 +81,7 @@ class TimeTableViewModel {
     }
     
     func fetchJourneyTimeData(type: BusService.OperatorType, service: String, direction: String) {
-        
-        guard loadingTask == nil else {
-            return
-        }
-        
-        loadingTask = Task {
+        Task {
             do {
                 let result = try await networkManager.fetch(EndPoint.showBusJourneyTable(matching: type, service: service, direction: direction), decode: { json -> BusJourneyResponse? in
                     guard let feedResult = json as? BusJourneyResponse else { return  nil }
@@ -116,8 +109,6 @@ class TimeTableViewModel {
                 showError?(error as? NetworkError ?? NetworkError.unKnown)
             }
         }
-        
-        loadingTask = nil
     }
     
     
