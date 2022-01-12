@@ -129,6 +129,36 @@ extension PlanView: UITableViewDelegate, UIScrollViewDelegate  {
         }
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let routes = self.viewModel.respone.routes[indexPath.row]
+        
+        let sourceCoordinates = routes.route_parts[indexPath.row].coordinates.first!
+        let destinationCoordinates = routes.route_parts[indexPath.row].coordinates.last!
+        
+        guard let presentVC = UIApplication.shared.keyWindowPresentedController else {
+            return
+        }
+        
+        let mapViewModel = MapRouteViewModel(sourceCoordinates: sourceCoordinates, destinationCoordinates: destinationCoordinates)
+        
+        let mapView = MapRouteViewController(viewModel: mapViewModel)
+        
+        mapView.modalPresentationStyle = .popover
+        if let pop = mapView.popoverPresentationController {
+            let sheet = pop.adaptiveSheetPresentationController
+            sheet.detents = [.medium(), .large()]
+            
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 30.0
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+        }
+        
+        presentVC.present(mapView, animated: true)
+
+    }
 }
 
 // MARK: - Private

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class PlanTableViewCell: UITableViewCell {
 
@@ -52,6 +53,12 @@ class PlanTableViewCell: UITableViewCell {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+    
+    let mapView: MKMapView = {
+        let map = MKMapView()
+        map.translatesAutoresizingMaskIntoConstraints = false
+        return map
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -82,6 +89,7 @@ extension PlanTableViewCell {
     func configureConstraints() {
       
         NSLayoutConstraint.activate([
+   
             from_Point_timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
             from_Point_timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             from_Point_timeLabel.heightAnchor.constraint(equalToConstant: 16),
