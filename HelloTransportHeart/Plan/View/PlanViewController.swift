@@ -15,7 +15,7 @@ class PlanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = PlanViewModel(networkManager: NetworkManager())
+        viewModel = PlanViewModel(networkManager: NetworkManager(), locationClient: LocalLocationClient())
 
         self.title = "Plan"
         planView = PlanView(viewModel: viewModel)
@@ -30,6 +30,6 @@ class PlanViewController: UIViewController {
             planView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
         ])
         
-        viewModel.fetchPlanData()
+        viewModel.fetchPlanData(.silverrail)
     }
 }

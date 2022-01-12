@@ -14,7 +14,6 @@ class PlanView: UIView {
     }
     
     private let viewModel: PlanViewModel
-    private var dataSource: UITableViewDiffableDataSource<SectionLayoutKind, Routes>! = nil
     private var tableView: UITableView!
     
     private var cellHeightsDictionary: [IndexPath: CGFloat] = [:]
@@ -25,7 +24,7 @@ class PlanView: UIView {
         self.viewModel = viewModel
         super.init(frame: .zero)
         configureTableView()
-        makeDataSource()
+        makeDateSource()
     }
     
     required init?(coder: NSCoder) {
@@ -80,45 +79,40 @@ extension PlanView {
     }
     
     func makeDateSource() {
-        makeDataSource()
-        tableView.dataSource = dataSource
+        tableView.dataSource = self
     }
     
     func applyInitialSnapshots() {
         
         DispatchQueue.main.async { [self] in
  
-            configureBusMember()
+            tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - UITableView DataSource
+extension PlanView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (self.viewModel.respone != nil) {
+            return self.viewModel.respone.routes.count
+        } else {
+            return 0
         }
     }
     
-    func configureBusMember() {
-       
-        var snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, Routes>()
- 
-        //Append available sections
-        SectionLayoutKind.allCases.forEach { snapshot.appendSections([$0]) }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PlanTableViewCell.reuseIdentifier, for: indexPath) as? PlanTableViewCell
         
-        let results = viewModel.respone.routes
-        snapshot.appendItems(results, toSection: .main)
+        let routes = self.viewModel.respone.routes[indexPath.row]
         
+        cell?.configureCell(routes: routes)
         
-        dataSource.apply(snapshot, animatingDifferences: false)
+        return cell ?? UITableViewCell()
     }
 }
 
-extension PlanView {
-    private func makeDataSource() {
-        
-        dataSource = UITableViewDiffableDataSource<SectionLayoutKind, Routes>(tableView: tableView, cellProvider: { (tableView, indexPath, item) -> PlanTableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: BusServiceCell.reuseIdentifier, for: indexPath) as? PlanTableViewCell
-            cell?.configureCell(routes: item)
-            return cell
-        })
-    }
-}
-
-// MARK: - UICollectionView Delegate
+// MARK: - UITableView Delegate
 extension PlanView: UITableViewDelegate, UIScrollViewDelegate  {
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {

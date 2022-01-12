@@ -52,13 +52,24 @@ struct Route_parts: Codable {
     let arrival_time: String
     let departure_datetime: String
     let arrival_datetime: String
-    let coordinates: [Coordinates]
+    let coordinates: [[Double]]
     let distance: Int
     let distance_desc: String
+    let steps: [Steps]?
 }
 
-struct Coordinates: Codable {
-    let point: [[Double]]
+struct Steps: Codable {
+    let instruction: Instruction
+    let distance: Distance
+    let duration: String
+}
+
+struct Instruction: Codable {
+    let text: String
+}
+
+struct Distance: Codable {
+    let value: Int
 }
 
 struct Destination_point: Codable {

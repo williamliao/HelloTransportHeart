@@ -13,6 +13,8 @@ protocol LocationClient {
     func requestPermission() async -> CLAuthorizationStatus
     func beginTracking() async
     func getUserLocation() async -> CLLocationCoordinate2D?
+    func getFrom() async -> String
+    func getTo() async -> String
 }
 
 class LocalLocationClient: LocationClient {
@@ -29,5 +31,21 @@ class LocalLocationClient: LocationClient {
     
     func getUserLocation() async -> CLLocationCoordinate2D? {
         return CLLocationCoordinate2D(latitude: 51.534121, longitude: 0.006944)
+    }
+    
+//    func getFrom() async -> String {
+//        return "-0.134649,51.529258"
+//    }
+//
+//    func getTo() async -> String {
+//        return "-0.088780,51.506383"
+//    }
+    
+    func getFrom() async -> String {
+        return "postcode:st52qd"
+    }
+
+    func getTo() async -> String {
+        return "postcode:ex85jf"
     }
 }
