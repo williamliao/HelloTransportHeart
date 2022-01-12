@@ -15,7 +15,10 @@ class TimeTableViewModel {
     private let networkManager: NetworkManager
     var stopTimeTableRespone: StopTimeTableRespone!
     var fullTimeTableRespone: fullTimeTableRespone!
+    var busJourneyResponse: BusJourneyResponse!
     var sourceType: TimeTableSource.SourceType
+    
+    private var loadingTask: Task<Void, Never>?
     
     init(networkManager: NetworkManager, sourceType: TimeTableSource.SourceType) {
         self.networkManager = networkManager
@@ -58,7 +61,7 @@ class TimeTableViewModel {
                 
                 switch result {
                     case .success(let res):
-                        print("fetchFullTimeData \(res)")
+                        //print("fetchFullTimeData \(res)")
                         fullTimeTableRespone = res
                     
                         if res.member.count > 0 {
@@ -79,6 +82,48 @@ class TimeTableViewModel {
         }
     }
     
+    func fetchJourneyTimeData(type: BusService.OperatorType, service: String, direction: String) {
+        
+        guard loadingTask == nil else {
+            return
+        }
+        
+        loadingTask = Task {
+            do {
+                let result = try await networkManager.fetch(EndPoint.showBusJourneyTable(matching: type, service: service, direction: direction), decode: { json -> BusJourneyResponse? in
+                    guard let feedResult = json as? BusJourneyResponse else { return  nil }
+                    return feedResult
+                })
+                
+                switch result {
+                    case .success(let res):
+                        print("fetchFullTimeData \(res)")
+                        busJourneyResponse = res
+                    
+                        if res.stops.count > 0 {
+                            goToTimeVC()
+                        } else {
+                            showAlert(message: "No Data From Server")
+                        }
+                    
+                    case .failure(let error):
+                        print("fetchFullTimeData error \(error)")
+                        showError?(error)
+                }
+                
+            }  catch  {
+                print("fetchFullTimeData error \(error)")
+                showError?(error as? NetworkError ?? NetworkError.unKnown)
+            }
+        }
+        
+        loadingTask = nil
+    }
+    
+    
+}
+
+extension TimeTableViewModel {
     func goToTimeVC() {
         DispatchQueue.main.async { [self] in
             let timeVC = TimeTableViewController(viewModel: self)

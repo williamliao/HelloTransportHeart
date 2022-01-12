@@ -140,24 +140,36 @@ extension BusServiceView {
             let cell = tableView.dequeueReusableCell(withIdentifier: BusServiceCell.reuseIdentifier, for: indexPath) as? BusServiceCell
             cell?.configureCell(member: item)
             
-            cell?.onInBoundAction = {
+            cell?.onInBoundAction = { [self] in
                 guard let category = BusService.OperatorType(rawValue:
                                                                 item.operators.code) else {
                     return
                 }
                 
-                let newViewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .fullTime)
-                newViewModel.fetchFullTimeData(type: category, service: item.line_name, direction: "inbound")
+                showActionSheet {
+                    let newViewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .fullTime)
+                    newViewModel.fetchFullTimeData(type: category, service: item.line_name, direction: "inbound")
+                } detailHandler: {
+                    let newViewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .detail)
+                    newViewModel.fetchJourneyTimeData(type: category, service: item.line_name, direction: "inbound")
+                }
             }
             
-            cell?.onOutBoundAction = {
+            cell?.onOutBoundAction = { [self] in
                 guard let category = BusService.OperatorType(rawValue:
                                                                 item.operators.code) else {
                     return
                 }
                 
-                let newViewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .fullTime)
-                newViewModel.fetchFullTimeData(type: category, service: item.line_name, direction: "outbound")
+                showActionSheet {
+                    let newViewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .fullTime)
+                    newViewModel.fetchFullTimeData(type: category, service: item.line_name, direction: "outbound")
+                } detailHandler: {
+                    let newViewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .detail)
+                    newViewModel.fetchJourneyTimeData(type: category, service: item.line_name, direction: "outbound")
+                }
+                
+                
             }
             
             return cell
@@ -282,5 +294,28 @@ extension BusServiceView {
     
     func showErrorToast(error: NetworkError) {
         print("showErrorToast \(error)")
+    }
+    
+    func showActionSheet(timeHandler: @escaping (() -> Void), detailHandler: @escaping (() -> Void)) {
+        let controller = UIAlertController(title: "TimeTable or Route Detail", message: "", preferredStyle: .actionSheet)
+      
+        let action = UIAlertAction(title: "TimeTable", style: .default) { action in
+            timeHandler()
+        }
+        controller.addAction(action)
+        
+        let action2 = UIAlertAction(title: "Route Detail", style: .default) { action in
+            detailHandler()
+        }
+        controller.addAction(action2)
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        controller.addAction(cancelAction)
+        
+        guard let presentVC = UIApplication.shared.keyWindowPresentedController else {
+            return
+        }
+        
+        presentVC.present(controller, animated: true, completion: nil)
     }
 }

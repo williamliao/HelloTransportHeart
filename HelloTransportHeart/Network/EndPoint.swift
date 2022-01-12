@@ -98,7 +98,7 @@ extension EndPoint {
     
     static func showBusJourneyTable(matching operators: BusService.OperatorType = .FBRI, service: String, direction: String) -> EndPoint {
         return EndPoint(
-            path: "v3/uk/bus/route/\(operators)/\(service)/\(direction)/timetable.json",
+            path: "/v3/uk/bus/route/\(operators)/\(service)/\(direction)/timetable.json",
             queryItems: [
                 URLQueryItem(name: "app_key", value: api_key),
                 URLQueryItem(name: "app_id", value: app_id),

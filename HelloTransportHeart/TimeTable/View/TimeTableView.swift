@@ -16,6 +16,7 @@ class TimeTableView: UIView {
     private var collectionView: UICollectionView! = nil
     private var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, BusItem>! = nil
     private var fullTimeDataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Stops>! = nil
+    private var journeyDataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Stops>! = nil
     
     init(viewModel: TimeTableViewModel) {
         self.viewModel = viewModel
@@ -84,6 +85,10 @@ class TimeTableView: UIView {
         let configuredFullTimeCell = UICollectionView.CellRegistration<TimeTableCollectionViewCell, Stops> { (cell, indexPath, itemIdentifier) in
             cell.configurationCell(stop: itemIdentifier)
         }
+        
+        let journeyCell = UICollectionView.CellRegistration<BusJourneyCollectionViewCell, Stops> { (cell, indexPath, itemIdentifier) in
+            cell.configurationJourneyCell(stop: itemIdentifier)
+        }
 
         dataSource = UICollectionViewDiffableDataSource<SectionLayoutKind, BusItem>(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, identifier: BusItem) -> TimeTableCollectionViewCell? in
@@ -97,6 +102,11 @@ class TimeTableView: UIView {
             return collectionView.dequeueConfiguredReusableCell(using: configuredFullTimeCell, for: indexPath, item: identifier)
         }
         
+        journeyDataSource = UICollectionViewDiffableDataSource<SectionLayoutKind, Stops>(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, identifier: Stops) -> BusJourneyCollectionViewCell? in
+            // Return the cell.
+            return collectionView.dequeueConfiguredReusableCell(using: journeyCell, for: indexPath, item: identifier)
+        }
         
     }
     
@@ -114,15 +124,17 @@ class TimeTableView: UIView {
                 updateStopData()
             case .fullTime:
                 updateFullTimeData()
+            case .detail:
+                updateJourneyData()
         }
     }
     
     func updateStopData() {
         
-        collectionView.dataSource = self.dataSource
+        collectionView.dataSource = dataSource
         
         let keys = self.viewModel.stopTimeTableRespone.departures.keys.sorted()
-        let departures = keys.map{ self.viewModel.stopTimeTableRespone.departures[$0]!}
+        let departures = keys.map{ viewModel.stopTimeTableRespone.departures[$0]!}
       
         var snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, BusItem>()
         snapshot.appendSections(SectionLayoutKind.allCases)
@@ -135,13 +147,11 @@ class TimeTableView: UIView {
         }
         
         dataSource.apply(mainSnapshot, to: .main, animatingDifferences: false)
-
-   
     }
     
     func updateFullTimeData() {
         
-        collectionView.dataSource = self.fullTimeDataSource
+        collectionView.dataSource = fullTimeDataSource
         
         var snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, Stops>()
         snapshot.appendSections(SectionLayoutKind.allCases)
@@ -149,10 +159,24 @@ class TimeTableView: UIView {
 
         var mainSnapshot = NSDiffableDataSourceSectionSnapshot<Stops>()
         
-        self.viewModel.fullTimeTableRespone.member.forEach { member in
+        viewModel.fullTimeTableRespone.member.forEach { member in
             mainSnapshot.append(member.stops)
         }
         
         fullTimeDataSource.apply(mainSnapshot, to: .main, animatingDifferences: false)
+    }
+    
+    func updateJourneyData() {
+        
+        collectionView.dataSource = journeyDataSource
+        
+        var snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, Stops>()
+        snapshot.appendSections(SectionLayoutKind.allCases)
+        journeyDataSource.apply(snapshot, animatingDifferences: false)
+
+        var mainSnapshot = NSDiffableDataSourceSectionSnapshot<Stops>()
+        mainSnapshot.append(viewModel.busJourneyResponse.stops)
+        
+        journeyDataSource.apply(mainSnapshot, to: .main, animatingDifferences: false)
     }
 }

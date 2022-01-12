@@ -170,6 +170,7 @@ struct TimeTableSource: Codable {
     enum SourceType: Codable {
         case stop
         case fullTime
+        case detail
     }
 }
 

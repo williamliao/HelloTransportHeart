@@ -116,4 +116,6 @@ extension TimeTableCollectionViewCell {
         departureLabel.text = "Arrive: \(stop.time)"
 //        boundLabel.text = busItem.dir
     }
+    
+    
 }
