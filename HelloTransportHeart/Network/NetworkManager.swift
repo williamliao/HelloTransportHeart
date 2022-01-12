@@ -110,6 +110,7 @@ extension NetworkManager {
     func loadRequest<T: Decodable>(_ endpoint: EndPoint, decode: @escaping (Decodable) -> T?, then handler: @escaping (Result<T, NetworkError>) -> Void) {
         
         guard let url = endpoint.url else {
+            handler(Result.failure(NetworkError.invalidURL))
             return
         }
         
