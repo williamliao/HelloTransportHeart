@@ -53,4 +53,66 @@ extension PlanViewModel {
             }
         }
     }
+    
+    func fetchRestrictsToPlanData(_ service: PlanService = .tfl, modes: PlanMode = .bus) {
+        networkManager.decoder.dateDecodingStrategy = .iso8601
+        
+        Task {
+            do {
+                
+                let from = await locationClient.getFrom()
+                let to = await locationClient.getTo()
+                
+                let result = try await networkManager.fetch(EndPoint.showRestrictsToOnlyPlanTable(matching: from, to: to, modes: modes, service: service), decode: { json -> PlanResponse? in
+                    guard let feedResult = json as? PlanResponse else { return  nil }
+                    return feedResult
+                })
+                
+                switch result {
+                    case .success(let res):
+                        //print("fetchPlanData \(res)")
+                        respone = res
+                        reloadTableView?()
+                    case .failure(let error):
+                        print("fetchPlanData error \(error)")
+                        showError?(error)
+                }
+                
+            }  catch  {
+                print("fetchPlanData error \(error)")
+                showError?(error as? NetworkError ?? NetworkError.unKnown)
+            }
+        }
+    }
+    
+    func fetchRestrictsExceptToPlanData(_ service: PlanService = .tfl, not_modes: PlanMode = .bus) {
+        networkManager.decoder.dateDecodingStrategy = .iso8601
+        
+        Task {
+            do {
+                
+                let from = await locationClient.getFrom()
+                let to = await locationClient.getTo()
+                
+                let result = try await networkManager.fetch(EndPoint.showRestrictsExceptPlanTable(matching: from, to: to, not_modes: not_modes, service: service), decode: { json -> PlanResponse? in
+                    guard let feedResult = json as? PlanResponse else { return  nil }
+                    return feedResult
+                })
+                
+                switch result {
+                    case .success(let res):
+                        //print("fetchPlanData \(res)")
+                        respone = res
+                        reloadTableView?()
+                    case .failure(let error):
+                        print("fetchPlanData error \(error)")
+                        showError?(error)
+                }
+                
+            }  catch  {
+                print("fetchPlanData error \(error)")
+                showError?(error as? NetworkError ?? NetworkError.unKnown)
+            }
+        }
+    }
 }

@@ -34,11 +34,11 @@ class LocalLocationClient: LocationClient {
     }
     
 //    func getFrom() async -> String {
-//        return "-0.134649,51.529258"
+//        return "51.529258, -0.134649"
 //    }
 //
 //    func getTo() async -> String {
-//        return "-0.088780,51.506383"
+//        return "51.506383 -0.088780"
 //    }
     
     func getFrom() async -> String {
