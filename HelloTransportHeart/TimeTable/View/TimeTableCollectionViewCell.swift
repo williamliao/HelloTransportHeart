@@ -111,9 +111,9 @@ extension TimeTableCollectionViewCell {
     }
     
     func configurationCell(stop: Stops) {
-//        nameLabel.text = busItem.line_name
-//        dateLabel.text = busItem.date
-//        departureLabel.text = "Arrive: \(busItem.aimed_departure_time)"
+        nameLabel.text = stop.stop_name
+        dateLabel.text = stop.date
+        departureLabel.text = "Arrive: \(stop.time)"
 //        boundLabel.text = busItem.dir
     }
 }

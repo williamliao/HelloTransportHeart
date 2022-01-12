@@ -24,6 +24,7 @@
 		C81EB51C278BCF7800A053E4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB51B278BCF7800A053E4 /* NetworkError.swift */; };
 		C81EB51E278BD33B00A053E4 /* NearByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB51D278BD33B00A053E4 /* NearByView.swift */; };
 		C83645F4278D16CB00D19F11 /* BusServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83645F3278D16CB00D19F11 /* BusServiceCell.swift */; };
+		C83645F8278E5F8E00D19F11 /* UIApplication+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83645F7278E5F8E00D19F11 /* UIApplication+Tools.swift */; };
 		C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553C278BE97A00AFDE1C /* LocationClient.swift */; };
 		C875553F278BF23800AFDE1C /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553E278BF23800AFDE1C /* BusStop.swift */; };
 		C8755545278BFA3100AFDE1C /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755544278BFA3100AFDE1C /* StatusViewModel.swift */; };
@@ -93,6 +94,7 @@
 		C81EB51B278BCF7800A053E4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		C81EB51D278BD33B00A053E4 /* NearByView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByView.swift; sourceTree = "<group>"; };
 		C83645F3278D16CB00D19F11 /* BusServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusServiceCell.swift; sourceTree = "<group>"; };
+		C83645F7278E5F8E00D19F11 /* UIApplication+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Tools.swift"; sourceTree = "<group>"; };
 		C875553C278BE97A00AFDE1C /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 		C875553E278BF23800AFDE1C /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 		C8755544278BFA3100AFDE1C /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			children = (
 				C81EB50B278BCAC800A053E4 /* LocationUpdater.swift */,
 				C875553C278BE97A00AFDE1C /* LocationClient.swift */,
+				C83645F7278E5F8E00D19F11 /* UIApplication+Tools.swift */,
 			);
 			path = Share;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 			files = (
 				C8755547278BFA4B00AFDE1C /* StatusViewController.swift in Sources */,
 				C8755585278C3F7700AFDE1C /* BusServiceView.swift in Sources */,
+				C83645F8278E5F8E00D19F11 /* UIApplication+Tools.swift in Sources */,
 				C8755567278C163F00AFDE1C /* TimeTable.swift in Sources */,
 				C875555F278BFBA200AFDE1C /* Northern.swift in Sources */,
 				C8755582278C3F5000AFDE1C /* BusServiceViewModel.swift in Sources */,

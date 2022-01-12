@@ -140,35 +140,24 @@ extension BusServiceView {
             let cell = tableView.dequeueReusableCell(withIdentifier: BusServiceCell.reuseIdentifier, for: indexPath) as? BusServiceCell
             cell?.configureCell(member: item)
             
-            
-            cell?.onInBoundAction = { [self] in
+            cell?.onInBoundAction = {
                 guard let category = BusService.OperatorType(rawValue:
                                                                 item.operators.code) else {
                     return
                 }
                 
-                //await viewModel.fetchFullTimeData(type: category, service: item.line_name, direction: "inbound")
-                
-                let timeVC = TimeTableViewController(sourceType: .fullTime)
-                timeVC.fetchFullTimeData(type: category, service: item.line_name, direction: "inbound")
-                self.presentTimeTableView(vc: timeVC)
+                let newViewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .fullTime)
+                newViewModel.fetchFullTimeData(type: category, service: item.line_name, direction: "inbound")
             }
             
-            cell?.onOutBoundAction = { [self] in
-                Task {
-                    
-                    guard let category = BusService.OperatorType(rawValue:
-                                                                    item.operators.code) else {
-                        return
-                    }
-                    
-                    await viewModel.fetchFullTimeData(type: category, service: item.line_name, direction: "outbound")
+            cell?.onOutBoundAction = {
+                guard let category = BusService.OperatorType(rawValue:
+                                                                item.operators.code) else {
+                    return
                 }
                 
-                let timeVC = TimeTableViewController(sourceType: .fullTime)
-                //timeVC.viewModel.fullTimeTableRespone = viewModel.fullTimeRespone
-                //timeVC.viewModel.reloadCollectionView?()
-                self.presentTimeTableView(vc: timeVC)
+                let newViewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .fullTime)
+                newViewModel.fetchFullTimeData(type: category, service: item.line_name, direction: "outbound")
             }
             
             return cell
@@ -294,39 +283,5 @@ extension BusServiceView {
     
     func showErrorToast(error: NetworkError) {
         print("showErrorToast \(error)")
-    }
-    
-    func presentTimeTableView(vc: UIViewController) {
-        
-        let keyWindow = UIApplication.shared.connectedScenes
-            .filter({ $0.activationState == .foregroundActive })
-            .map({ $0 as? UIWindowScene })
-            .compactMap({ $0 })
-            .first?.windows
-            .filter({ $0.isKeyWindow }).first
-      
-        if let currentTabController = keyWindow?.rootViewController as? UITabBarController {
-            
-            if let currentNavController = currentTabController.selectedViewController as? UINavigationController {
-             
-                if let currentVc = currentNavController.viewControllers.first {
-                    vc.modalPresentationStyle = .popover
-                    if let pop = vc.popoverPresentationController {
-                        let sheet = pop.adaptiveSheetPresentationController
-                        sheet.detents = [.medium(), .large()]
-                        
-                        sheet.prefersGrabberVisible = true
-                        sheet.preferredCornerRadius = 30.0
-                        sheet.largestUndimmedDetentIdentifier = .medium
-                        sheet.prefersEdgeAttachedInCompactHeight = true
-                        sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-                    }
-                    
-                    currentVc.present(vc, animated: true)
-                }
-                
-                
-            }
-        }
     }
 }

@@ -9,12 +9,11 @@ import UIKit
 
 class TimeTableViewController: UIViewController {
     
-    var viewModel: TimeTableViewModel!
+    var viewModel: TimeTableViewModel
     var timeTableView: TimeTableView!
-    var sourceType: TimeTableSource.SourceType
     
-    init(sourceType: TimeTableSource.SourceType) {
-        self.sourceType = sourceType
+    init(viewModel: TimeTableViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -25,7 +24,7 @@ class TimeTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: sourceType)
+        //viewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: sourceType)
         
         self.title = "Time"
         timeTableView = TimeTableView(viewModel: viewModel)
@@ -41,15 +40,11 @@ class TimeTableViewController: UIViewController {
         ])
     }
     
-    func fetchTimeTableData(atcode: String) async {
-        Task {
-            await viewModel.fetchStopTimeTableData(atcode: atcode)
-        }
+    func fetchTimeTableData(atcode: String) {
+        viewModel.fetchStopTimeTableData(atcode: atcode)
     }
     
     func fetchFullTimeData(type: BusService.OperatorType, service: String, direction: String) {
-        Task {
-            await viewModel.fetchFullTimeData(type: type, service: service, direction: direction)
-        }
+        viewModel.fetchFullTimeData(type: type, service: service, direction: direction)
     }
 }

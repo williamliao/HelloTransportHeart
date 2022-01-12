@@ -32,7 +32,7 @@ class TimeTableView: UIView {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureLayout())
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.dataSource = self.dataSource
+        
         
         self.addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -96,12 +96,14 @@ class TimeTableView: UIView {
             // Return the cell.
             return collectionView.dequeueConfiguredReusableCell(using: configuredFullTimeCell, for: indexPath, item: identifier)
         }
+        
+        
     }
     
     func applyInitialSnapshots() {
         
-        DispatchQueue.main.async { [weak self] in
-            self?.updateSnapShot()
+        DispatchQueue.main.async { [self] in
+            updateSnapShot()
         }
     }
     
@@ -116,36 +118,41 @@ class TimeTableView: UIView {
     }
     
     func updateStopData() {
-        let keys = self.viewModel.stopTimeTableRespone.departures.keys.sorted()
-        let array = keys.map{ self.viewModel.stopTimeTableRespone.departures[$0]!}
         
+        collectionView.dataSource = self.dataSource
+        
+        let keys = self.viewModel.stopTimeTableRespone.departures.keys.sorted()
+        let departures = keys.map{ self.viewModel.stopTimeTableRespone.departures[$0]!}
+      
         var snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, BusItem>()
         snapshot.appendSections(SectionLayoutKind.allCases)
         dataSource.apply(snapshot, animatingDifferences: false)
 
-        var bakerlooSnapshot = NSDiffableDataSourceSectionSnapshot<BusItem>()
-        //bakerlooSnapshot.append([self.viewModel.timeTableRespone])
-        
-        
-        array.forEach { busItem in
-            bakerlooSnapshot.append(busItem)
+        var mainSnapshot = NSDiffableDataSourceSectionSnapshot<BusItem>()
+ 
+        departures.forEach { busItem in
+            mainSnapshot.append(busItem)
         }
         
-        dataSource.apply(bakerlooSnapshot, to: .main, animatingDifferences: false)
+        dataSource.apply(mainSnapshot, to: .main, animatingDifferences: false)
+
+   
     }
     
     func updateFullTimeData() {
+        
+        collectionView.dataSource = self.fullTimeDataSource
+        
         var snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, Stops>()
         snapshot.appendSections(SectionLayoutKind.allCases)
         fullTimeDataSource.apply(snapshot, animatingDifferences: false)
 
-        var bakerlooSnapshot = NSDiffableDataSourceSectionSnapshot<Stops>()
-        //bakerlooSnapshot.append([self.viewModel.fullTimeTableRespone.member])
+        var mainSnapshot = NSDiffableDataSourceSectionSnapshot<Stops>()
         
         self.viewModel.fullTimeTableRespone.member.forEach { member in
-            bakerlooSnapshot.append(member.stops)
+            mainSnapshot.append(member.stops)
         }
         
-        fullTimeDataSource.apply(bakerlooSnapshot, to: .main, animatingDifferences: false)
+        fullTimeDataSource.apply(mainSnapshot, to: .main, animatingDifferences: false)
     }
 }

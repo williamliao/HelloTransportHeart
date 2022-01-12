@@ -146,8 +146,8 @@ struct Stops: Codable {
     let stop_name: String
     let smscode: String
     let locality: String
-    let bearing: String
-    let indicator: String
+    let bearing: String?
+    let indicator: String?
     let latitude: Double
     let longitude: Double
     let timing_point: Bool
@@ -155,14 +155,14 @@ struct Stops: Codable {
 
 extension Stops: Hashable, Equatable {
     static func == (lhs: Stops, rhs: Stops) -> Bool {
-        guard lhs.atcocode == rhs.atcocode
+        guard lhs.time == rhs.time
         else { return false }
         
         return true
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(atcocode)
+        hasher.combine(time)
     }
 }
 

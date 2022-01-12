@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class TimeTableViewModel {
     
@@ -21,50 +22,109 @@ class TimeTableViewModel {
         self.sourceType = sourceType
     }
     
-    func fetchStopTimeTableData(atcode: String) async {
+    func fetchStopTimeTableData(atcode: String) {
 
-        do {
-            let result = try await networkManager.fetch(EndPoint.showStopTimeTable(matching: atcode), decode: { json -> StopTimeTableRespone? in
-                guard let feedResult = json as? StopTimeTableRespone else { return  nil }
-                return feedResult
-            })
-            
-            switch result {
-                case .success(let res):
-                    print("fetchTimeTableData \(res)")
-                    stopTimeTableRespone = res
-                    reloadCollectionView?()
-                case .failure(let error):
-                    print("fetchTimeTableData error \(error)")
-                    showError?(error)
+        Task {
+            do {
+                let result = try await networkManager.fetch(EndPoint.showStopTimeTable(matching: atcode), decode: { json -> StopTimeTableRespone? in
+                    guard let feedResult = json as? StopTimeTableRespone else { return  nil }
+                    return feedResult
+                })
+                
+                switch result {
+                    case .success(let res):
+                       // print("fetchTimeTableData \(res)")
+                        stopTimeTableRespone = res
+                        reloadCollectionView?()
+                    case .failure(let error):
+                        print("fetchTimeTableData error \(error)")
+                        showError?(error)
+                }
+                
+            }  catch  {
+                print("fetchTimeTableData error \(error)")
+                showError?(error as? NetworkError ?? NetworkError.unKnown)
             }
-            
-        }  catch  {
-            print("fetchTimeTableData error \(error)")
-            showError?(error as? NetworkError ?? NetworkError.unKnown)
         }
     }
     
-    func fetchFullTimeData(type: BusService.OperatorType, service: String, direction: String) async {
-        do {
-            let result = try await networkManager.fetch(EndPoint.showBusFullTimeTable(matching: type, service: service, direction: direction), decode: { json -> fullTimeTableRespone? in
-                guard let feedResult = json as? fullTimeTableRespone else { return  nil }
-                return feedResult
-            })
+    func fetchFullTimeData(type: BusService.OperatorType, service: String, direction: String) {
+        Task {
+            do {
+                let result = try await networkManager.fetch(EndPoint.showBusFullTimeTable(matching: type, service: service, direction: direction), decode: { json -> fullTimeTableRespone? in
+                    guard let feedResult = json as? fullTimeTableRespone else { return  nil }
+                    return feedResult
+                })
+                
+                switch result {
+                    case .success(let res):
+                        print("fetchFullTimeData \(res)")
+                        fullTimeTableRespone = res
+                    
+                        if res.member.count > 0 {
+                            goToTimeVC()
+                        } else {
+                            showAlert(message: "No Data From Server")
+                        }
+                    
+                    case .failure(let error):
+                        print("fetchFullTimeData error \(error)")
+                        showError?(error)
+                }
+                
+            }  catch  {
+                print("fetchFullTimeData error \(error)")
+                showError?(error as? NetworkError ?? NetworkError.unKnown)
+            }
+        }
+    }
+    
+    func goToTimeVC() {
+        DispatchQueue.main.async { [self] in
+            let timeVC = TimeTableViewController(viewModel: self)
+            presentTimeTableView(vc: timeVC)
             
-            switch result {
-                case .success(let res):
-                    print("fetchFullTimeData \(res)")
-                    fullTimeTableRespone = res
-                    reloadCollectionView?()
-                case .failure(let error):
-                    print("fetchFullTimeData error \(error)")
-                    showError?(error)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                reloadCollectionView?()
+            }
+        }
+    }
+    
+    func presentTimeTableView(vc: UIViewController) {
+    
+        guard let presentVC = UIApplication.shared.keyWindowPresentedController else {
+            return
+        }
+        
+        vc.modalPresentationStyle = .popover
+        if let pop = vc.popoverPresentationController {
+            let sheet = pop.adaptiveSheetPresentationController
+            sheet.detents = [.medium(), .large()]
+            
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 30.0
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+        }
+        
+        presentVC.present(vc, animated: true)
+    }
+    
+    func showAlert(message: String) {
+        
+        DispatchQueue.main.async {
+            
+            guard let presentVC = UIApplication.shared.keyWindowPresentedController else {
+                return
             }
             
-        }  catch  {
-            print("fetchFullTimeData error \(error)")
-            showError?(error as? NetworkError ?? NetworkError.unKnown)
+            let alertController = UIAlertController(title: NSLocalizedString("Attention", comment: ""), message: message, preferredStyle: .alert)
+     
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { action in
+                
+            })
+            presentVC.present(alertController, animated: true, completion: nil)
         }
     }
 }

@@ -103,12 +103,11 @@ extension NearByView: MKMapViewDelegate {
         guard let buswork = view.annotation as? Buswork else {
             return
         }
-
-        let timeVC = TimeTableViewController(sourceType: .stop)
         
-        Task {
-            await timeVC.fetchTimeTableData(atcode: buswork.atcocode)
-        }
+        let viewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .stop)
+
+        let timeVC = TimeTableViewController(viewModel: viewModel)
+        timeVC.fetchTimeTableData(atcode: buswork.atcocode)
         
         DispatchQueue.main.async {
             self.presentTimeTableView(vc: timeVC)
