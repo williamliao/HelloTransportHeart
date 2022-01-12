@@ -74,6 +74,7 @@
                         <segue destination="y6h-da-2j6" kind="relationship" relationship="viewControllers" id="i1T-2q-qIY"/>
                         <segue destination="b2d-QR-wE7" kind="relationship" relationship="viewControllers" id="6rI-YP-q99"/>
                         <segue destination="bUD-eX-VXH" kind="relationship" relationship="viewControllers" id="j9J-Rc-7Hk"/>
+                        <segue destination="YHA-gQ-nwj" kind="relationship" relationship="viewControllers" id="EDI-TY-3im"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80i-5N-13H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -133,6 +134,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFj-xu-aF3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1063.768115942029" y="1501.3392857142856"/>
+        </scene>
+        <!--Plan View Controller-->
+        <scene sceneID="DAP-QU-Yaq">
+            <objects>
+                <viewController id="Yff-h6-FoJ" customClass="PlanViewController" customModule="HelloTransportHeart" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vW5-sW-oCv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="I3k-5a-wI3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uZS-Xe-CBJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qRH-Je-WZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1989.8550724637682" y="2172.9910714285711"/>
+        </scene>
+        <!--Plan-->
+        <scene sceneID="NQm-aX-Hzr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YHA-gQ-nwj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Plan" id="PPc-vA-lC7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rT2-tq-KdQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Yff-h6-FoJ" kind="relationship" relationship="rootViewController" id="qJi-ME-cW3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tpH-BI-MB5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1079.7101449275362" y="2172.9910714285711"/>
         </scene>
     </scenes>
     <resources>

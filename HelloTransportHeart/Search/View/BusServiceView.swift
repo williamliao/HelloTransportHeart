@@ -261,7 +261,6 @@ extension BusServiceView: UISearchBarDelegate {
 }
 
 // MARK: - Private
-
 extension BusServiceView {
     func isLoading(isLoading: Bool) {
         if isLoading {

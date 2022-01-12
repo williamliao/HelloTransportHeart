@@ -12,6 +12,19 @@ enum SearchType: String {
     case train_station
 }
 
+enum PlanService: String {
+    case tfl
+    case silverrail
+}
+
+enum PlanMode: String {
+    case bus
+    case train
+    case tube
+    case boat
+    case bus_train_boat = "bus-train-boat"
+}
+
 struct EndPoint {
     let path: String
     let queryItems: [URLQueryItem]
@@ -77,6 +90,54 @@ extension EndPoint {
                 URLQueryItem(name: "service", value: service),
                 URLQueryItem(name: "direction", value: direction),
                 URLQueryItem(name: "date", value: formatter.string(from: Date())),
+                URLQueryItem(name: "app_key", value: api_key),
+                URLQueryItem(name: "app_id", value: app_id),
+            ]
+        )
+    }
+    
+    static func showBusJourneyTable(matching operators: BusService.OperatorType = .FBRI, service: String, direction: String) -> EndPoint {
+        return EndPoint(
+            path: "v3/uk/bus/route/\(operators)/\(service)/\(direction)/timetable.json",
+            queryItems: [
+                URLQueryItem(name: "app_key", value: api_key),
+                URLQueryItem(name: "app_id", value: app_id),
+            ]
+        )
+    }
+    
+    static func showBasicPlanTable(matching from: String, to: String, service: PlanService) -> EndPoint {
+       
+        return EndPoint(
+            path: "/v3/uk/public/journey/from/\(from)/to/\(to).json",
+            queryItems: [
+                URLQueryItem(name: "service", value: service.rawValue),
+                URLQueryItem(name: "app_key", value: api_key),
+                URLQueryItem(name: "app_id", value: app_id),
+            ]
+        )
+    }
+    
+    static func showRestrictsToOnlyPlanTable(matching from: String, to: String, modes: PlanMode = .bus, service: PlanService = .tfl) -> EndPoint {
+       
+        return EndPoint(
+            path: "/v3/uk/public/journey/from/\(from)/to/\(to).json",
+            queryItems: [
+                URLQueryItem(name: "service", value: service.rawValue),
+                URLQueryItem(name: "modes", value: modes.rawValue),
+                URLQueryItem(name: "app_key", value: api_key),
+                URLQueryItem(name: "app_id", value: app_id),
+            ]
+        )
+    }
+    
+    static func showRestrictsExceptPlanTable(matching from: String, to: String, not_modes: PlanMode = .bus, service: PlanService = .tfl) -> EndPoint {
+       
+        return EndPoint(
+            path: "/v3/uk/public/journey/from/\(from)/to/\(to).json",
+            queryItems: [
+                URLQueryItem(name: "service", value: service.rawValue),
+                URLQueryItem(name: "not_modes", value: not_modes.rawValue),
                 URLQueryItem(name: "app_key", value: api_key),
                 URLQueryItem(name: "app_id", value: app_id),
             ]

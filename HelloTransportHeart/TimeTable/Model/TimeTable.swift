@@ -172,3 +172,27 @@ struct TimeTableSource: Codable {
         case fullTime
     }
 }
+
+struct BusJourneyResponse: Codable {
+    let request_time: String
+    let operators: String
+    let operator_name: String
+    let line: String
+    let line_name: String
+    let origin_atcocode: String
+    let dir: String
+    let id: String
+    let stops: [Stops]
+    
+    private enum CodingKeys : String, CodingKey {
+        case request_time
+        case id
+        case operators = "operator"
+        case operator_name
+        case line
+        case line_name
+        case origin_atcocode
+        case dir
+        case stops
+    }
+}

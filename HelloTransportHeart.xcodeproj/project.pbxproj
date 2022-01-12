@@ -25,6 +25,11 @@
 		C81EB51E278BD33B00A053E4 /* NearByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EB51D278BD33B00A053E4 /* NearByView.swift */; };
 		C83645F4278D16CB00D19F11 /* BusServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83645F3278D16CB00D19F11 /* BusServiceCell.swift */; };
 		C83645F8278E5F8E00D19F11 /* UIApplication+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83645F7278E5F8E00D19F11 /* UIApplication+Tools.swift */; };
+		C83645FC278E633600D19F11 /* PlanRespone.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83645FB278E633600D19F11 /* PlanRespone.swift */; };
+		C83645FF278E63E400D19F11 /* PlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83645FE278E63E400D19F11 /* PlanViewModel.swift */; };
+		C8364602278E6BA800D19F11 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8364601278E6BA800D19F11 /* PlanView.swift */; };
+		C8364604278E6BBE00D19F11 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8364603278E6BBE00D19F11 /* PlanViewController.swift */; };
+		C8364606278E6FCD00D19F11 /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8364605278E6FCD00D19F11 /* PlanTableViewCell.swift */; };
 		C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553C278BE97A00AFDE1C /* LocationClient.swift */; };
 		C875553F278BF23800AFDE1C /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553E278BF23800AFDE1C /* BusStop.swift */; };
 		C8755545278BFA3100AFDE1C /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755544278BFA3100AFDE1C /* StatusViewModel.swift */; };
@@ -95,6 +100,11 @@
 		C81EB51D278BD33B00A053E4 /* NearByView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByView.swift; sourceTree = "<group>"; };
 		C83645F3278D16CB00D19F11 /* BusServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusServiceCell.swift; sourceTree = "<group>"; };
 		C83645F7278E5F8E00D19F11 /* UIApplication+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Tools.swift"; sourceTree = "<group>"; };
+		C83645FB278E633600D19F11 /* PlanRespone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanRespone.swift; sourceTree = "<group>"; };
+		C83645FE278E63E400D19F11 /* PlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewModel.swift; sourceTree = "<group>"; };
+		C8364601278E6BA800D19F11 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
+		C8364603278E6BBE00D19F11 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
+		C8364605278E6FCD00D19F11 /* PlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
 		C875553C278BE97A00AFDE1C /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 		C875553E278BF23800AFDE1C /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 		C8755544278BFA3100AFDE1C /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
@@ -173,6 +183,7 @@
 		C81EB4D4278BC7CE00A053E4 /* HelloTransportHeart */ = {
 			isa = PBXGroup;
 			children = (
+				C83645F9278E62D300D19F11 /* Plan */,
 				C875557C278C3CA800AFDE1C /* Search */,
 				C8755568278C1FCC00AFDE1C /* TimeTable */,
 				C8755540278BF9FD00AFDE1C /* Status */,
@@ -258,6 +269,42 @@
 			children = (
 				C81EB511278BCC7500A053E4 /* NearByViewController.swift */,
 				C81EB51D278BD33B00A053E4 /* NearByView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C83645F9278E62D300D19F11 /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				C8364600278E6B9500D19F11 /* View */,
+				C83645FD278E63D300D19F11 /* ViewModel */,
+				C83645FA278E62E400D19F11 /* Model */,
+			);
+			path = Plan;
+			sourceTree = "<group>";
+		};
+		C83645FA278E62E400D19F11 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C83645FB278E633600D19F11 /* PlanRespone.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C83645FD278E63D300D19F11 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C83645FE278E63E400D19F11 /* PlanViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C8364600278E6B9500D19F11 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C8364601278E6BA800D19F11 /* PlanView.swift */,
+				C8364603278E6BBE00D19F11 /* PlanViewController.swift */,
+				C8364605278E6FCD00D19F11 /* PlanTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -518,12 +565,14 @@
 				C83645F8278E5F8E00D19F11 /* UIApplication+Tools.swift in Sources */,
 				C8755567278C163F00AFDE1C /* TimeTable.swift in Sources */,
 				C875555F278BFBA200AFDE1C /* Northern.swift in Sources */,
+				C83645FF278E63E400D19F11 /* PlanViewModel.swift in Sources */,
 				C8755582278C3F5000AFDE1C /* BusServiceViewModel.swift in Sources */,
 				C8755559278BFB5500AFDE1C /* Hammersmith.swift in Sources */,
 				C8755545278BFA3100AFDE1C /* StatusViewModel.swift in Sources */,
 				C875554D278BFAC800AFDE1C /* Line.swift in Sources */,
 				C875557B278C327300AFDE1C /* TimeTableCollectionViewCell.swift in Sources */,
 				C875554B278BFAA800AFDE1C /* StatusResponse.swift in Sources */,
+				C8364602278E6BA800D19F11 /* PlanView.swift in Sources */,
 				C875553F278BF23800AFDE1C /* BusStop.swift in Sources */,
 				C8755553278BFB1900AFDE1C /* Circle.swift in Sources */,
 				C81EB4D6278BC7CE00A053E4 /* AppDelegate.swift in Sources */,
@@ -540,15 +589,18 @@
 				C81EB51A278BCEF400A053E4 /* NetworkManager.swift in Sources */,
 				C875556D278C200200AFDE1C /* TimeTableView.swift in Sources */,
 				C875557F278C3D7100AFDE1C /* BusServiceRespone.swift in Sources */,
+				C8364604278E6BBE00D19F11 /* PlanViewController.swift in Sources */,
 				C8755561278BFBBC00AFDE1C /* Piccadilly.swift in Sources */,
 				C8755551278BFAEF00AFDE1C /* central.swift in Sources */,
 				C83645F4278D16CB00D19F11 /* BusServiceCell.swift in Sources */,
 				C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */,
+				C8364606278E6FCD00D19F11 /* PlanTableViewCell.swift in Sources */,
 				C8755587278C3F8100AFDE1C /* BusServiceViewController.swift in Sources */,
 				C81EB514278BCC8400A053E4 /* NearByViewModel.swift in Sources */,
 				C875555D278BFB7B00AFDE1C /* Metropolitan.swift in Sources */,
 				C8755563278BFBD500AFDE1C /* Victoria.swift in Sources */,
 				C81EB51C278BCF7800A053E4 /* NetworkError.swift in Sources */,
+				C83645FC278E633600D19F11 /* PlanRespone.swift in Sources */,
 				C8755557278BFB4400AFDE1C /* Dlr.swift in Sources */,
 				C81EB4D8278BC7CE00A053E4 /* SceneDelegate.swift in Sources */,
 				C81EB512278BCC7500A053E4 /* NearByViewController.swift in Sources */,
