@@ -143,6 +143,18 @@ extension EndPoint {
             ]
         )
     }
+    
+    static func placesTextSearch(matching query: String) -> EndPoint {
+       
+        return EndPoint(
+            path: "/v3/uk/places.json",
+            queryItems: [
+                URLQueryItem(name: "query", value: query),
+                URLQueryItem(name: "app_key", value: api_key),
+                URLQueryItem(name: "app_id", value: app_id),
+            ]
+        )
+    }
 }
 
 extension EndPoint {
