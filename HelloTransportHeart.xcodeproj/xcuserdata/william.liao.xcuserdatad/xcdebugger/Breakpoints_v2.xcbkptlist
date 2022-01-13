@@ -40,7 +40,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0C9411B5-5F64-4BDB-BB5C-932A31A049F9"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HelloTransportHeart/TimeTable/ViewModel/TimeTableViewModel.swift"
@@ -65,6 +65,22 @@
             startingLineNumber = "95"
             endingLineNumber = "95"
             landmarkName = "configureDataSource()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5286AF9B-434E-4C76-9AC8-60164F8B3D84"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HelloTransportHeart/NearBy/ViewModel/NearByViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "fetchPlacesTextSearch(query:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
