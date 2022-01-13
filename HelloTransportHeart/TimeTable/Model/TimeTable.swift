@@ -171,6 +171,7 @@ struct TimeTableSource: Codable {
         case stop
         case fullTime
         case detail
+        case train
     }
 }
 
@@ -242,6 +243,19 @@ struct All: Codable {
         case source
         case category
         case service_timetable
+    }
+}
+
+extension All: Hashable, Equatable {
+    static func == (lhs: All, rhs: All) -> Bool {
+        guard lhs.train_uid == rhs.train_uid
+        else { return false }
+        
+        return true
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(train_uid)
     }
 }
 

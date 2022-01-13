@@ -47,4 +47,8 @@ class TimeTableViewController: UIViewController {
     func fetchFullTimeData(type: BusService.OperatorType, service: String, direction: String) {
         viewModel.fetchFullTimeData(type: type, service: service, direction: direction)
     }
+    
+    func fetchTrainStationTimeData(station_code: String) {
+        viewModel.fetchTrainStationTimetable(station_code: station_code)
+    }
 }

@@ -146,17 +146,28 @@ extension NearByView: MKMapViewDelegate {
       annotationView view: MKAnnotationView,
       calloutAccessoryControlTapped control: UIControl
     ) {
-        guard let buswork = view.annotation as? Buswork, let attcode = buswork.atcocode  else {
+        guard let buswork = view.annotation as? Buswork else {
             return
         }
         
         switch buswork.memberType {
             case .bus_stop:
-                let viewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .stop)
-                let timeVC = TimeTableViewController(viewModel: viewModel)
-                timeVC.fetchTimeTableData(atcode: attcode)
-                DispatchQueue.main.async {
-                    self.presentTimeTableView(vc: timeVC)
+                if let attcode = buswork.atcocode {
+                    let viewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .stop)
+                    let timeVC = TimeTableViewController(viewModel: viewModel)
+                    timeVC.fetchTimeTableData(atcode: attcode)
+                    DispatchQueue.main.async {
+                        self.presentTimeTableView(vc: timeVC)
+                    }
+                }
+            case .train_station:
+                if let station_code = buswork.station_code {
+                    let viewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .train)
+                    let timeVC = TimeTableViewController(viewModel: viewModel)
+                    timeVC.fetchTrainStationTimeData(station_code: station_code)
+                    DispatchQueue.main.async {
+                        self.presentTimeTableView(vc: timeVC)
+                    }
                 }
             default:
                 break

@@ -17,6 +17,7 @@ class TimeTableView: UIView {
     private var dataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, BusItem>! = nil
     private var fullTimeDataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Stops>! = nil
     private var journeyDataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, Stops>! = nil
+    private var trainDataSource: UICollectionViewDiffableDataSource<SectionLayoutKind, All>! = nil
     
     init(viewModel: TimeTableViewModel) {
         self.viewModel = viewModel
@@ -89,6 +90,10 @@ class TimeTableView: UIView {
         let journeyCell = UICollectionView.CellRegistration<BusJourneyCollectionViewCell, Stops> { (cell, indexPath, itemIdentifier) in
             cell.configurationJourneyCell(stop: itemIdentifier)
         }
+        
+        let trainCell = UICollectionView.CellRegistration<TrainCollectionViewCell, All> { (cell, indexPath, itemIdentifier) in
+            cell.configurationTrainCell(all: itemIdentifier)
+        }
 
         dataSource = UICollectionViewDiffableDataSource<SectionLayoutKind, BusItem>(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, identifier: BusItem) -> TimeTableCollectionViewCell? in
@@ -108,6 +113,11 @@ class TimeTableView: UIView {
             return collectionView.dequeueConfiguredReusableCell(using: journeyCell, for: indexPath, item: identifier)
         }
         
+        trainDataSource = UICollectionViewDiffableDataSource<SectionLayoutKind, All>(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, identifier: All) -> TrainCollectionViewCell? in
+            // Return the cell.
+            return collectionView.dequeueConfiguredReusableCell(using: trainCell, for: indexPath, item: identifier)
+        }
     }
     
     func applyInitialSnapshots() {
@@ -126,6 +136,8 @@ class TimeTableView: UIView {
                 updateFullTimeData()
             case .detail:
                 updateJourneyData()
+            case .train:
+                updateTrainData()
         }
     }
     
@@ -178,5 +190,19 @@ class TimeTableView: UIView {
         mainSnapshot.append(viewModel.busJourneyResponse.stops)
         
         journeyDataSource.apply(mainSnapshot, to: .main, animatingDifferences: false)
+    }
+    
+    func updateTrainData() {
+        
+        collectionView.dataSource = trainDataSource
+        
+        var snapshot = NSDiffableDataSourceSnapshot<SectionLayoutKind, All>()
+        snapshot.appendSections(SectionLayoutKind.allCases)
+        trainDataSource.apply(snapshot, animatingDifferences: false)
+
+        var mainSnapshot = NSDiffableDataSourceSectionSnapshot<All>()
+        mainSnapshot.append(viewModel.trainStationResponse.departures.all)
+        
+        trainDataSource.apply(mainSnapshot, to: .main, animatingDifferences: false)
     }
 }

@@ -35,6 +35,7 @@
 		C836460C278EC6C800D19F11 /* MapRouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836460B278EC6C800D19F11 /* MapRouteViewModel.swift */; };
 		C836460E278ECAE900D19F11 /* MapKit+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836460D278ECAE900D19F11 /* MapKit+Tools.swift */; };
 		C8364610278ED88A00D19F11 /* BusJourneyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836460F278ED88A00D19F11 /* BusJourneyCollectionViewCell.swift */; };
+		C8364612278FD3AD00D19F11 /* TrainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8364611278FD3AD00D19F11 /* TrainCollectionViewCell.swift */; };
 		C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553C278BE97A00AFDE1C /* LocationClient.swift */; };
 		C875553F278BF23800AFDE1C /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553E278BF23800AFDE1C /* BusStop.swift */; };
 		C8755545278BFA3100AFDE1C /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755544278BFA3100AFDE1C /* StatusViewModel.swift */; };
@@ -115,6 +116,7 @@
 		C836460B278EC6C800D19F11 /* MapRouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouteViewModel.swift; sourceTree = "<group>"; };
 		C836460D278ECAE900D19F11 /* MapKit+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapKit+Tools.swift"; sourceTree = "<group>"; };
 		C836460F278ED88A00D19F11 /* BusJourneyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusJourneyCollectionViewCell.swift; sourceTree = "<group>"; };
+		C8364611278FD3AD00D19F11 /* TrainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainCollectionViewCell.swift; sourceTree = "<group>"; };
 		C875553C278BE97A00AFDE1C /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 		C875553E278BF23800AFDE1C /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 		C8755544278BFA3100AFDE1C /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				C875556E278C200F00AFDE1C /* TimeTableViewController.swift */,
 				C875557A278C327300AFDE1C /* TimeTableCollectionViewCell.swift */,
 				C836460F278ED88A00D19F11 /* BusJourneyCollectionViewCell.swift */,
+				C8364611278FD3AD00D19F11 /* TrainCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				C875555F278BFBA200AFDE1C /* Northern.swift in Sources */,
 				C83645FF278E63E400D19F11 /* PlanViewModel.swift in Sources */,
 				C8755582278C3F5000AFDE1C /* BusServiceViewModel.swift in Sources */,
+				C8364612278FD3AD00D19F11 /* TrainCollectionViewCell.swift in Sources */,
 				C8755559278BFB5500AFDE1C /* Hammersmith.swift in Sources */,
 				C8755545278BFA3100AFDE1C /* StatusViewModel.swift in Sources */,
 				C836460E278ECAE900D19F11 /* MapKit+Tools.swift in Sources */,

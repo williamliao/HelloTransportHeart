@@ -16,6 +16,7 @@ class TimeTableViewModel {
     var stopTimeTableRespone: StopTimeTableRespone!
     var fullTimeTableRespone: fullTimeTableRespone!
     var busJourneyResponse: BusJourneyResponse!
+    var trainStationResponse: TrainStationTimetableResponse!
     var sourceType: TimeTableSource.SourceType
     
     init(networkManager: NetworkManager, sourceType: TimeTableSource.SourceType) {
@@ -111,6 +112,36 @@ class TimeTableViewModel {
         }
     }
     
+    func fetchTrainStationTimetable(station_code: String) {
+        Task {
+            do {
+                let result = try await networkManager.fetch(EndPoint.showTrainStationTimetable(matching: station_code), decode: { json -> TrainStationTimetableResponse? in
+                    guard let feedResult = json as? TrainStationTimetableResponse else { return  nil }
+                    return feedResult
+                })
+                
+                switch result {
+                    case .success(let res):
+                        print("fetchTrainStationTimetable \(res)")
+                        trainStationResponse = res
+                    
+                        if res.departures.all.count > 0 {
+                            goToTimeVC()
+                        } else {
+                            showAlert(message: "No Data From Server")
+                        }
+                    
+                    case .failure(let error):
+                        print("fetchTrainStationTimetable error \(error)")
+                        showError?(error)
+                }
+                
+            }  catch  {
+                print("fetchTrainStationTimetable error \(error)")
+                showError?(error as? NetworkError ?? NetworkError.unKnown)
+            }
+        }
+    }
     
 }
 
