@@ -26,7 +26,7 @@ class BusServiceView: UIView {
     
     var searchType: BusService.OperatorType = .FBRI
     
-    init(viewModel: BusServiceViewModel,  navItem: UINavigationItem) {
+    init(viewModel: BusServiceViewModel, navItem: UINavigationItem) {
         self.viewModel = viewModel
         self.navItem = navItem
         super.init(frame: .zero)

@@ -27,9 +27,9 @@ class NearByViewController: UIViewController {
         }
         
         viewModel.fetchNearByData()
-        
+
         self.title = "BusStop"
-        nearByView = NearByView(viewModel: viewModel)
+        nearByView = NearByView(viewModel: viewModel, navItem: self.navigationItem)
         nearByView.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(nearByView)

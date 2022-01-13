@@ -20,8 +20,8 @@ struct Member: Codable {
     let latitude: Double
     let longitude: Double
     let accuracy: Int
-    let description: String
-    let atcocode: String
+    let description: String?
+    let atcocode: String?
     let distance: Double?
     let osm_id: String?
     let station_code: String?
