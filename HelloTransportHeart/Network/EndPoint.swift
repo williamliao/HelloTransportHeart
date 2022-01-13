@@ -39,8 +39,8 @@ enum PlaceTextSearchType: String {
 struct EndPoint {
     let path: String
     let queryItems: [URLQueryItem]
-    static let api_key: String = ""
-    static let app_id: String = ""
+    static let api_key: String = "07f79536d1afc8f1f9dae84448e7248c"
+    static let app_id: String = "1977e378"
 }
 
 extension EndPoint {
