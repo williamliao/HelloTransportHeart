@@ -25,6 +25,17 @@ enum PlanMode: String {
     case bus_train_boat = "bus-train-boat"
 }
 
+enum PlaceTextSearchType: String {
+    case train_station
+    case bus_stop
+    case tube_station
+    case settlement //geocoding match for a city/town/village/suburb/neighbourhood
+    case region
+    case street
+    case poi //point of interest
+    case postcode
+}
+
 struct EndPoint {
     let path: String
     let queryItems: [URLQueryItem]
@@ -144,11 +155,20 @@ extension EndPoint {
         )
     }
     
-    static func placesTextSearch(matching query: String) -> EndPoint {
-       
+    static func placesTextSearch(matching query: String, types: [PlaceTextSearchType] = [.bus_stop]) -> EndPoint {
+        
+        var queryTypes = types
+        var typeStr = queryTypes.first!.rawValue
+        queryTypes.removeFirst()
+        
+        for type in queryTypes {
+            typeStr += "," + type.rawValue
+        }
+
         return EndPoint(
             path: "/v3/uk/places.json",
             queryItems: [
+                URLQueryItem(name: "type", value: typeStr),
                 URLQueryItem(name: "query", value: query),
                 URLQueryItem(name: "app_key", value: api_key),
                 URLQueryItem(name: "app_id", value: app_id),

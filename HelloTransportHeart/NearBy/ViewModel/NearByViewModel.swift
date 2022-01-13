@@ -58,7 +58,7 @@ class NearByViewModel {
         Task {
             
             do {
-                let result = try await networkManager.fetch(EndPoint.placesTextSearch(matching: query), decode: { json -> PlacesTextSearchRespone? in
+                let result = try await networkManager.fetch(EndPoint.placesTextSearch(matching: query, types: [.bus_stop, .train_station, .tube_station]), decode: { json -> PlacesTextSearchRespone? in
                     guard let feedResult = json as? PlacesTextSearchRespone else { return  nil }
                     return feedResult
                 })
