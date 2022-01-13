@@ -151,7 +151,7 @@ extension NearByView: MKMapViewDelegate {
         }
         
         switch buswork.memberType {
-            case .bus_stop:
+            case .bus_stop, .tram_stop, .tube_station:
                 if let attcode = buswork.atcocode {
                     let viewModel = TimeTableViewModel(networkManager: NetworkManager(), sourceType: .stop)
                     let timeVC = TimeTableViewController(viewModel: viewModel)
