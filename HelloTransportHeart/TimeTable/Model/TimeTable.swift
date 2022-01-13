@@ -197,3 +197,57 @@ struct BusJourneyResponse: Codable {
         case stops
     }
 }
+
+struct TrainStationTimetableResponse: Codable {
+    let date: String
+    let time_of_day: String
+    let request_time: String
+    let station_name: String
+    let station_code: String
+    let departures: Departures
+}
+
+struct Departures: Codable {
+    let all: [All]
+}
+
+struct All: Codable {
+    let mode: String
+    let service: String
+    let train_uid: String
+    let platform: String
+    let operators: String
+    let operator_name: String
+    let aimed_departure_time: String
+    let aimed_arrival_time: String
+    let aimed_pass_time: Aimed_pass_time
+    let origin_name: String
+    let destination_name: String
+    let source: String
+    let category: String
+    let service_timetable: Service_timetable
+    
+    private enum CodingKeys : String, CodingKey {
+        case mode
+        case service
+        case train_uid
+        case platform
+        case operators = "operator"
+        case operator_name
+        case aimed_departure_time
+        case aimed_arrival_time
+        case aimed_pass_time
+        case origin_name
+        case destination_name
+        case source
+        case category
+        case service_timetable
+    }
+}
+
+struct Aimed_pass_time: Codable {
+}
+
+struct Service_timetable: Codable {
+    let id: String
+}
