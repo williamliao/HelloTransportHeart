@@ -170,7 +170,6 @@ extension TimeTableViewModel {
             
             sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 30.0
-            sheet.largestUndimmedDetentIdentifier = .medium
             sheet.prefersEdgeAttachedInCompactHeight = true
             sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
         }

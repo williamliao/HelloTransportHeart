@@ -193,9 +193,9 @@ extension NearByView: MKMapViewDelegate {
                         let sheet = pop.adaptiveSheetPresentationController
                         sheet.detents = [.medium(), .large()]
                         
-                        sheet.prefersGrabberVisible = true
+                        sheet.prefersGrabberVisible = false
                         sheet.preferredCornerRadius = 30.0
-                        sheet.largestUndimmedDetentIdentifier = .medium
+                        sheet.sourceView = vc.view
                         sheet.prefersEdgeAttachedInCompactHeight = true
                         sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
                     }
