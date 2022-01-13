@@ -67,7 +67,14 @@ class NearByViewModel {
                     case .success(let res):
                         //print("fetchPlacesTextSearch \(res)")
                         placesTextSearchRespone = res
-                        reloadPlaceSearchMapView?()
+                    
+                        if res.member.count > 0 {
+                            reloadPlaceSearchMapView?()
+                        } else {
+                            showError?(NetworkError.other("searchNotMatch"))
+                        }
+                    
+                        
                     case .failure(let error):
                         print("fetchPlacesTextSearch error \(error)")
                         showError?(error)

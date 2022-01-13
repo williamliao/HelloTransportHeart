@@ -14,26 +14,62 @@ class NearByView: UIView {
     
     private let viewModel: NearByViewModel
     private var navItem: UINavigationItem
+    private var matchingItems:[MKMapItem] = []
     
-    let searchController: UISearchController = {
+    private let searchController: UISearchController = {
         let sc = UISearchController()
         sc.obscuresBackgroundDuringPresentation = false
         sc.searchBar.placeholder = NSLocalizedString("Search Directions", comment: "")
         sc.definesPresentationContext = true
+        sc.hidesNavigationBarDuringPresentation = false
         sc.searchBar.autocapitalizationType = .none
         return sc
+    }()
+    
+    private enum Section: CaseIterable {
+        case main
+    }
+    
+    private var searchDataSource: UITableViewDiffableDataSource<Section, MKMapItem>!
+    
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        return tableView
     }()
    
     init(viewModel: NearByViewModel, navItem: UINavigationItem) {
         self.viewModel = viewModel
         self.navItem = navItem
         super.init(frame: .zero)
-        createSearchView()
         createView()
+        createSearchView()
+        makeSearchDataSource()
+        createTableView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func createTableView() {
+        
+        tableView.delegate = self
+        tableView.dataSource = searchDataSource
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(NearBySearchCell.self, forCellReuseIdentifier: NearBySearchCell.reuseIdentifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .systemBackground
+        tableView.isHidden = true
+        
+        addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            tableView.heightAnchor.constraint(equalToConstant: 300)
+        ])
     }
     
     func createSearchView() {
@@ -41,6 +77,7 @@ class NearByView: UIView {
         navItem.hidesSearchBarWhenScrolling = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
     }
     
     func createView() {
@@ -67,6 +104,15 @@ class NearByView: UIView {
         viewModel.reloadPlaceSearchMapView = { [weak self] in
             DispatchQueue.main.async {
                 self?.addPlaceTextSearch()
+            }
+        }
+        
+        viewModel.showError = { [weak self] error in
+            switch error {
+            case .other(let message):
+                self?.showError(message: message)
+            default:
+                self?.showError(message: error.localizedDescription)
             }
         }
     }
@@ -202,11 +248,7 @@ extension NearByView: MKMapViewDelegate {
                     
                     currentVc.present(vc, animated: true)
                 }
-                
-                
             }
-            
-            
         }
     }
     
@@ -223,22 +265,11 @@ extension NearByView: MKMapViewDelegate {
 // MARK: - UISearchBarDelegate
 extension NearByView: UISearchBarDelegate {
    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-   
-        guard let searchText = searchBar.text else {
-            return
-        }
-      
-        // Strip out all the leading and trailing spaces.
-        let whitespaceCharacterSet = CharacterSet.whitespaces
-        let strippedString =
-            searchText.trimmingCharacters(in: whitespaceCharacterSet)
-     
-        viewModel.fetchPlacesTextSearch(query: strippedString) //Waterloo
-    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {}
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         closeSearchView()
+        //moveToUserLocation()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -248,7 +279,141 @@ extension NearByView: UISearchBarDelegate {
     }
    
     func closeSearchView() {
-        endEditing(true)
-        moveToUserLocation()
+        DispatchQueue.main.async { [self] in
+            searchController.searchBar.resignFirstResponder()
+            tableView.isHidden = true
+            matchingItems = [MKMapItem]()
+            tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+extension NearByView: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let mapView = mapView,
+            let searchBarText = searchController.searchBar.text else { return }
+        
+        tableView.isHidden = false
+        
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = searchBarText
+        request.region = mapView.region
+        let search = MKLocalSearch(request: request)
+        search.start { [self] response, _ in
+            guard let response = response else {
+                return
+            }
+            matchingItems = response.mapItems
+            applyInitialSnapshots()
+        }
+    }
+    
+    private func parseAddress(_ selectedItem:MKPlacemark) -> String {
+        // put a space between "4" and "Melrose Place"
+        let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""
+        // put a comma between street and city/state
+        let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) && (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : ""
+        // put a space between "Washington" and "DC"
+        let secondSpace = (selectedItem.subAdministrativeArea != nil && selectedItem.administrativeArea != nil) ? " " : ""
+        let addressLine = String(
+            format:"%@%@%@%@%@%@%@",
+            // street number
+            selectedItem.subThoroughfare ?? "",
+            firstSpace,
+            // street name
+            selectedItem.thoroughfare ?? "",
+            comma,
+            // city
+            selectedItem.locality ?? "",
+            secondSpace,
+            // state
+            selectedItem.administrativeArea ?? ""
+        )
+        return addressLine
+    }
+}
+
+// MARK: - UITableViewDiffableDataSource
+extension NearByView {
+    private func makeSearchDataSource() {
+        
+        searchDataSource = UITableViewDiffableDataSource<Section, MKMapItem>(tableView: tableView, cellProvider: { [ self] (tableView, indexPath, item) -> NearBySearchCell in
+           
+            let cell = tableView.dequeueReusableCell(withIdentifier: NearBySearchCell.reuseIdentifier, for: indexPath) as! NearBySearchCell
+            
+            if matchingItems.isEmpty {
+                cell.textLabel?.text = ""
+                cell.detailTextLabel?.text = ""
+                return cell
+            }
+            
+            let selectedItem = matchingItems[indexPath.row].placemark
+            cell.textLabel?.text = selectedItem.name
+            cell.detailTextLabel?.text = parseAddress(selectedItem)
+            cell.textLabel?.textColor = .label
+            cell.detailTextLabel?.textColor = .label
+            return cell
+        })
+    }
+    
+    private func applyInitialSnapshots() {
+        
+        DispatchQueue.main.async { [self] in
+ 
+            configureMapItem()
+        }
+    }
+    
+    private func configureMapItem() {
+       
+        var snapshot = NSDiffableDataSourceSnapshot<Section, MKMapItem>()
+ 
+        //Append available sections
+        Section.allCases.forEach { snapshot.appendSections([$0]) }
+        
+        snapshot.appendItems(matchingItems, toSection: .main)
+        
+        if matchingItems.isEmpty {
+            snapshot.appendItems([], toSection: .main)
+        }
+    
+        searchDataSource.apply(snapshot, animatingDifferences: false)
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension NearByView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedItem = matchingItems[indexPath.row].placemark
+       
+        guard let searchText = selectedItem.name else {
+            return
+        }
+       
+        let whitespaceCharacterSet = CharacterSet.whitespaces
+        let strippedString =
+            searchText.trimmingCharacters(in: whitespaceCharacterSet)
+     
+        closeSearchView()
+        viewModel.fetchPlacesTextSearch(query: strippedString) //Waterloo
+    }
+}
+
+extension NearByView {
+    func showError(message: String) {
+        DispatchQueue.main.async {
+            
+            guard let presentVC = UIApplication.shared.keyWindowPresentedController else {
+                return
+            }
+            
+            let alertController = UIAlertController(title: NSLocalizedString("Attention", comment: ""), message: message, preferredStyle: .alert)
+     
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { action in
+                
+            })
+            presentVC.present(alertController, animated: true, completion: nil)
+        }
     }
 }

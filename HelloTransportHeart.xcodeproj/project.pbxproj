@@ -36,6 +36,7 @@
 		C836460E278ECAE900D19F11 /* MapKit+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836460D278ECAE900D19F11 /* MapKit+Tools.swift */; };
 		C8364610278ED88A00D19F11 /* BusJourneyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836460F278ED88A00D19F11 /* BusJourneyCollectionViewCell.swift */; };
 		C8364612278FD3AD00D19F11 /* TrainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8364611278FD3AD00D19F11 /* TrainCollectionViewCell.swift */; };
+		C836461627902DF200D19F11 /* NearBySearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C836461527902DF200D19F11 /* NearBySearchCell.swift */; };
 		C875553D278BE97A00AFDE1C /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553C278BE97A00AFDE1C /* LocationClient.swift */; };
 		C875553F278BF23800AFDE1C /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875553E278BF23800AFDE1C /* BusStop.swift */; };
 		C8755545278BFA3100AFDE1C /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8755544278BFA3100AFDE1C /* StatusViewModel.swift */; };
@@ -117,6 +118,7 @@
 		C836460D278ECAE900D19F11 /* MapKit+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapKit+Tools.swift"; sourceTree = "<group>"; };
 		C836460F278ED88A00D19F11 /* BusJourneyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusJourneyCollectionViewCell.swift; sourceTree = "<group>"; };
 		C8364611278FD3AD00D19F11 /* TrainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainCollectionViewCell.swift; sourceTree = "<group>"; };
+		C836461527902DF200D19F11 /* NearBySearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearBySearchCell.swift; sourceTree = "<group>"; };
 		C875553C278BE97A00AFDE1C /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 		C875553E278BF23800AFDE1C /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 		C8755544278BFA3100AFDE1C /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			children = (
 				C81EB511278BCC7500A053E4 /* NearByViewController.swift */,
 				C81EB51D278BD33B00A053E4 /* NearByView.swift */,
+				C836461527902DF200D19F11 /* NearBySearchCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				C875555B278BFB6800AFDE1C /* Jubilee.swift in Sources */,
 				C81EB508278BCA2400A053E4 /* EndPoint.swift in Sources */,
 				C81EB516278BCCB100A053E4 /* NearByRespone.swift in Sources */,
+				C836461627902DF200D19F11 /* NearBySearchCell.swift in Sources */,
 				C81EB51E278BD33B00A053E4 /* NearByView.swift in Sources */,
 				C875556F278C200F00AFDE1C /* TimeTableViewController.swift in Sources */,
 				C8755555278BFB3000AFDE1C /* District.swift in Sources */,

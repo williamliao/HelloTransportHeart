@@ -34,4 +34,5 @@ enum NetworkError: Error {
     case invalidURLRequest
     case invalidURL
     case unKnown
+    case other(_ localizedDescription: String)
 }
