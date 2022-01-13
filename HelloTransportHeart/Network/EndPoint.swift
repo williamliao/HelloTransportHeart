@@ -155,6 +155,18 @@ extension EndPoint {
             ]
         )
     }
+    
+    static func showTrainStationTimetable(matching trainStation: String) -> EndPoint {
+       
+        return EndPoint(
+            path: "/v3/uk/train/station/\(trainStation)/timetable.json",
+            queryItems: [
+                URLQueryItem(name: "app_key", value: api_key),
+                URLQueryItem(name: "app_id", value: app_id),
+                URLQueryItem(name: "train_status", value: "passenger"),
+            ]
+        )
+    }
 }
 
 extension EndPoint {
