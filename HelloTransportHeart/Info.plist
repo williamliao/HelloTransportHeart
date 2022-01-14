@@ -21,5 +21,10 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>AccuracyFeature</key>
+		<string>This app needs accurate location so it can verify that you’re in a supported region.</string>
+	</dict>
 </dict>
 </plist>

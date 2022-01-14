@@ -10,7 +10,6 @@ import CoreLocation
 
 protocol LocationClient {
     
-    func requestPermission() async -> CLAuthorizationStatus
     func beginTracking() async
     func getUserLocation() async -> CLLocationCoordinate2D?
     func getFrom() async -> String
@@ -20,11 +19,7 @@ protocol LocationClient {
 class LocalLocationClient: LocationClient {
     
     private let locationUpdater: LocationUpdater = LocationUpdater()
-    
-    func requestPermission() async -> CLAuthorizationStatus {
-        return await locationUpdater.requestPermission()
-    }
-    
+   
     func beginTracking() async {
         await locationUpdater.beginTracking()
     }
@@ -33,13 +28,13 @@ class LocalLocationClient: LocationClient {
         return CLLocationCoordinate2D(latitude: 51.534121, longitude: 0.006944)
     }
     
-//    func getFrom() async -> String {
-//        return "51.529258, -0.134649"
-//    }
-//
-//    func getTo() async -> String {
-//        return "51.506383 -0.088780"
-//    }
+    func getGPSFrom() async -> String {
+        return "51.529258, -0.134649"
+    }
+
+    func getGPSTo() async -> String {
+        return "51.506383 -0.088780"
+    }
     
     func getFrom() async -> String {
         return "postcode:st52qd"
